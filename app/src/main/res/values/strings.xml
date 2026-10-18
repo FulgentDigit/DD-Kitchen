@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">IyaAdam Kitchen</string>
-    <string name="header_text">For Delicious Food Experience: Visit IyaAdam Kitchen @ Awokoya, Ijebu Ode</string>
-    <string name="app_tagline">Premium Nigerian Cuisine - Fresh &amp; Delicious</string>
+<?xml version="1.0" encoding="utf-8"?><resources>
+    <string name="app_name">DD Kitchen</string>
+    <string name="header_text">Your cravings, our passion. Welcome to DD Kitchen.</string>
+    <string name="app_tagline">Delicious Meals. Great Moments. Made with Love.</string>
 </resources>
