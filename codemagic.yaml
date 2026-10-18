@@ -1,25 +1,19 @@
 workflows:
 android-workflow:
 name: DD-Kitchen Android
-
 max_build_duration: 120
-
 instance_type: mac_mini_m2
 
 environment:
   java: 17
-
   vars:
     PACKAGE_NAME: "com.ddkitchen.app"
 
 scripts:
-
   - name: Check project files
     script: |
-      echo "===== PROJECT FILES ====="
       pwd
       ls -la
-      echo "===== GRADLE FILES ====="
       ls -la gradle/wrapper || true
 
   - name: Generate Gradle Wrapper
@@ -29,7 +23,6 @@ scripts:
   - name: Make Gradle executable
     script: |
       chmod +x gradlew
-      ls -l gradlew
 
   - name: Build Android App Bundle
     script: |
