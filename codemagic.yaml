@@ -1,44 +1,41 @@
 workflows:
-  android-workflow:
-    name: IyaAdam Kitchen Android
+android-workflow:
+name: DD-Kitchen Android
 
-    max_build_duration: 120
+max_build_duration: 120
 
-    instance_type: mac_mini_m2
+instance_type: mac_mini_m2
 
-    environment:
-      java: 17
+environment:
+  java: 17
 
-      android_signing:
-        - iyaadam-release
+  vars:
+    PACKAGE_NAME: "com.ddkitchen.app"
 
-      vars:
-        PACKAGE_NAME: "com.iyaadam.app"
+scripts:
 
-    scripts:
+  - name: Check project files
+    script: |
+      echo "===== PROJECT FILES ====="
+      pwd
+      ls -la
+      echo "===== GRADLE FILES ====="
+      ls -la gradle/wrapper || true
 
-      - name: Check project files
-        script: |
-          echo "===== PROJECT FILES ====="
-          pwd
-          ls -la
-          echo "===== GRADLE FILES ====="
-          ls -la gradle/wrapper || true
+  - name: Generate Gradle Wrapper
+    script: |
+      gradle wrapper --gradle-version 8.14.1
 
-      - name: Generate Gradle Wrapper
-        script: |
-          gradle wrapper --gradle-version 8.14.1
+  - name: Make Gradle executable
+    script: |
+      chmod +x gradlew
+      ls -l gradlew
 
-      - name: Make Gradle executable
-        script: |
-          chmod +x gradlew
-          ls -l gradlew
+  - name: Build Android App Bundle
+    script: |
+      ./gradlew clean
+      ./gradlew bundleRelease --stacktrace
 
-      - name: Build Android App Bundle
-        script: |
-          ./gradlew clean
-          ./gradlew bundleRelease --stacktrace
-
-    artifacts:
-      - app/build/outputs/**/*.aab
-      - app/build/outputs/**/*.apk
+artifacts:
+  - app/build/outputs/**/*.aab
+  - app/build/outputs/**/*.apk
