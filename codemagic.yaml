@@ -3,32 +3,26 @@ android-workflow:
 name: DD-Kitchen Android
 max_build_duration: 120
 instance_type: mac_mini_m2
-
 environment:
-  java: 17
-  vars:
-    PACKAGE_NAME: "com.ddkitchen.app"
-
+java: 17
+vars:
+PACKAGE_NAME: "com.ddkitchen.app"
 scripts:
-  - name: Check project files
-    script: |
-      pwd
-      ls -la
-      ls -la gradle/wrapper || true
-
-  - name: Generate Gradle Wrapper
-    script: |
-      gradle wrapper --gradle-version 8.14.1
-
-  - name: Make Gradle executable
-    script: |
-      chmod +x gradlew
-
-  - name: Build Android App Bundle
-    script: |
-      ./gradlew clean
-      ./gradlew bundleRelease --stacktrace
-
+- name: Check project files
+script: |
+pwd
+ls -la
+ls -la gradle/wrapper || true
+- name: Generate Gradle Wrapper
+script: |
+gradle wrapper --gradle-version 8.14.1
+- name: Make Gradle executable
+script: |
+chmod +x gradlew
+- name: Build Android App Bundle
+script: |
+./gradlew clean
+./gradlew bundleRelease --stacktrace
 artifacts:
-  - app/build/outputs/**/*.aab
-  - app/build/outputs/**/*.apk
+- app/build/outputs//*.aab
+- app/build/outputs//*.apk
