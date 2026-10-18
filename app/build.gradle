@@ -4,7 +4,7 @@ id 'com.android.application'
 
 android {
 compileSdk 36
-namespace 'com.ddkitchen.app'
+namespace 'com.iyaadam.app'
 
 defaultConfig {
     applicationId "com.ddkitchen.app"
