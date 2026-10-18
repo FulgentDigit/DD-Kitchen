@@ -8,19 +8,10 @@ java: 17
 vars:
 PACKAGE_NAME: "com.ddkitchen.app"
 scripts:
-- name: Check project files
-script: |
-pwd
-ls -la
-ls -la gradle/wrapper || true
-- name: Generate Gradle Wrapper
-script: |
-gradle wrapper --gradle-version 8.14.1
-- name: Make Gradle executable
-script: |
-chmod +x gradlew
 - name: Build Android App Bundle
 script: |
+gradle wrapper --gradle-version 8.14.1
+chmod +x gradlew
 ./gradlew clean
 ./gradlew bundleRelease --stacktrace
 artifacts:
