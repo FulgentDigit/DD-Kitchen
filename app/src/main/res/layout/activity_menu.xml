@@ -14,7 +14,7 @@
         <!-- HEADER -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="64dp"
+            android:layout_height="68dp"
             android:background="@color/header_green"
             android:gravity="center_vertical"
             android:paddingStart="12dp"
@@ -39,19 +39,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="🍴 IyaAdam Kitchen"
+                    android:text="🍴 DD KITCHEN"
                     android:textColor="#FFFFFF"
-                    android:textSize="20sp"
+                    android:textSize="21sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="FULL MENU"
+                    android:text="SMART RESTAURANT SERVICE"
                     android:textColor="@color/gold"
                     android:textSize="10sp"
                     android:textStyle="bold"
-                    android:letterSpacing="0.15" />
+                    android:letterSpacing="0.08" />
 
             </LinearLayout>
 
@@ -62,40 +62,52 @@
             android:layout_height="2dp"
             android:background="@color/alert_red" />
 
-        <!-- INTRODUCTION -->
+        <!-- RESTAURANT INTRODUCTION -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
-            android:padding="16dp"
+            android:padding="18dp"
             android:orientation="vertical"
             android:background="#FFFFFF">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/restaurant_name"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Welcome to our kitchen 👋"
+                android:text="DD KITCHEN"
                 android:textColor="#002D21"
-                android:textSize="19sp"
+                android:textSize="23sp"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/restaurant_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:text="Explore our selection of freshly prepared African and Continental dishes. Tap any meal to add it to your cart."
+                android:layout_marginTop="7dp"
+                android:text="📍 Off Olisa Road, Ijebu Ode, Ogun State, Nigeria"
                 android:textColor="#555555"
                 android:textSize="13sp"
                 android:lineSpacingExtra="2dp" />
 
             <TextView
+                android:id="@+id/menu_status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Need something special? Use Custom Order below to tell us exactly what you want."
+                android:layout_marginTop="12dp"
+                android:text="Freshly prepared. Made with love."
                 android:textColor="#006B4F"
-                android:textSize="12sp"
+                android:textSize="13sp"
                 android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="Explore our African and Continental dishes. Tap any meal to add it to your cart."
+                android:textColor="#555555"
+                android:textSize="13sp"
+                android:lineSpacingExtra="3dp" />
 
         </LinearLayout>
 
@@ -105,7 +117,8 @@
             android:layout_height="wrap_content"
             android:scrollbars="none"
             android:paddingStart="10dp"
-            android:paddingEnd="10dp">
+            android:paddingEnd="10dp"
+            android:clipToPadding="false">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -178,6 +191,7 @@
                     android:backgroundTint="#006B4F" />
 
             </LinearLayout>
+
         </HorizontalScrollView>
 
         <!-- MENU TITLE -->
@@ -214,7 +228,8 @@
             android:nestedScrollingEnabled="false"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
-            android:paddingBottom="8dp" />
+            android:paddingBottom="8dp"
+            android:clipToPadding="false" />
 
         <!-- CUSTOM ORDER -->
         <LinearLayout
@@ -283,9 +298,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="IYAADAM KITCHEN"
+                android:text="DD KITCHEN"
                 android:textColor="@color/gold"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.08" />
 
@@ -293,7 +308,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="📍 Restaurant Address"
+                android:text="📍 OUR LOCATION"
                 android:textColor="#FFFFFF"
                 android:textSize="13sp"
                 android:textStyle="bold" />
@@ -301,21 +316,22 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Awokoya, Ijebu Ode, Ogun State, Nigeria"
+                android:layout_marginTop="4dp"
+                android:text="Off Olisa Road, Ijebu Ode, Ogun State, Nigeria"
                 android:textColor="#CCCCCC"
                 android:textSize="13sp" />
 
             <TextView
                 android:id="@+id/whatsapp_btn"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="15dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="18dp"
                 android:gravity="center"
-                android:text="💬  WhatsApp Customer Service"
+                android:text="💬  CHAT WITH US ON WHATSAPP"
                 android:textColor="#FFFFFF"
                 android:textSize="13sp"
                 android:textStyle="bold"
-                android:background="#006B4F"
+                android:background="#087F4F"
                 android:clickable="true"
                 android:focusable="true" />
 
@@ -324,7 +340,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:gravity="center"
-                android:text="+2347089364492"
+                android:text="+234 907 891 7130"
                 android:textColor="@color/gold"
                 android:textSize="13sp"
                 android:textStyle="bold" />
@@ -334,7 +350,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
                 android:gravity="center"
-                android:text="Home of African and Continental Dishes"
+                android:text="Experience Smart Restaurant Service in Ijebu Ode"
                 android:textColor="#AAAAAA"
                 android:textSize="11sp" />
 
@@ -343,7 +359,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:gravity="center"
-                android:text="Developed by fdc: +2347089364492"
+                android:text="Developed by Fulgent Digital Clinic"
                 android:textColor="#777777"
                 android:textSize="10sp" />
 
