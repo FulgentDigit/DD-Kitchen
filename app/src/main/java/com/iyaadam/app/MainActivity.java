@@ -24,48 +24,77 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         dishesRecycler = findViewById(R.id.dishes_recycler);
-        dishesRecycler.setLayoutManager(new GridLayoutManager(this, 2));
+        dishesRecycler.setLayoutManager(
+                new GridLayoutManager(this, 2));
 
         dishes = createSampleDishes();
 
         adapter = new DishAdapter(this, dishes, this);
         dishesRecycler.setAdapter(adapter);
 
+        // Search area opens the existing menu.
         findViewById(R.id.ic_search).setOnClickListener(v ->
                 openMenu());
 
+        // Featured banner button.
         findViewById(R.id.btn_order_now).setOnClickListener(v ->
                 openMenu());
 
+        // View all dishes.
         findViewById(R.id.btn_view_all).setOnClickListener(v ->
                 openMenu());
 
+        // Shopping cart.
         findViewById(R.id.ic_cart_nav).setOnClickListener(v ->
-                startActivity(new Intent(this, CartActivity.class)));
+                openCart());
 
         findViewById(R.id.ic_cart_header).setOnClickListener(v ->
-                startActivity(new Intent(this, CartActivity.class)));
+                openCart());
 
+        // Customer profile.
         findViewById(R.id.ic_person).setOnClickListener(v ->
-                startActivity(new Intent(this, ProfileActivity.class)));
+                startActivity(
+                        new Intent(this, ProfileActivity.class)));
 
+        // Existing music feature.
         findViewById(R.id.ic_orders).setOnClickListener(v ->
-                startActivity(new Intent(this, MusicPlayerActivity.class)));
+                startActivity(
+                        new Intent(this, MusicPlayerActivity.class)));
 
+        // Home tab.
         findViewById(R.id.ic_home).setOnClickListener(v ->
-                Toast.makeText(this,
-                        "Welcome to IyaAdam Kitchen!",
-                        Toast.LENGTH_SHORT).show());
+                Toast.makeText(
+                        this,
+                        "Welcome to DD Kitchen!",
+                        Toast.LENGTH_SHORT
+                ).show());
 
+        // Notifications.
         findViewById(R.id.ic_notification).setOnClickListener(v ->
-                Toast.makeText(this,
+                Toast.makeText(
+                        this,
                         "No new notifications",
-                        Toast.LENGTH_SHORT).show());
+                        Toast.LENGTH_SHORT
+                ).show());
+
+        // Menu tab in the bottom navigation.
+        findViewById(R.id.ic_search_nav).setOnClickListener(v ->
+                openMenu());
     }
 
     private void openMenu() {
-        Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+        Intent intent = new Intent(
+                MainActivity.this,
+                MenuActivity.class
+        );
         startActivity(intent);
+    }
+
+    private void openCart() {
+        startActivity(new Intent(
+                MainActivity.this,
+                CartActivity.class
+        ));
     }
 
     private List<Dish> createSampleDishes() {
@@ -165,17 +194,15 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onDishClick(Dish dish) {
-        CartManager.getInstance().addToCart(dish);
-
-        Toast.makeText(
-                this,
-                dish.name + " added to cart",
-                Toast.LENGTH_SHORT
-        ).show();
+        addDishToCart(dish);
     }
 
     @Override
     public void onAddToCart(Dish dish) {
+        addDishToCart(dish);
+    }
+
+    private void addDishToCart(Dish dish) {
         CartManager.getInstance().addToCart(dish);
 
         Toast.makeText(
