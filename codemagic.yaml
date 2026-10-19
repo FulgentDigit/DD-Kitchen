@@ -12,6 +12,9 @@ workflows:
       - name: Set Android SDK location
         script: 'echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/local.properties"'
 
+      - name: Generate Gradle Wrapper
+        script: 'gradle wrapper --gradle-version 8.14.1 && chmod +x gradlew'
+
       - name: Build DD Kitchen Debug APK
         script: './gradlew clean assembleDebug --stacktrace'
 
