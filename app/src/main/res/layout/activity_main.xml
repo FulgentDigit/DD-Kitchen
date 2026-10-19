@@ -56,11 +56,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="FRESH FOOD. BOLD FLAVOUR."
+                        android:text="SMART SERVICE. GREAT FOOD."
                         android:textColor="#FFFFFF"
                         android:textSize="9sp"
                         android:textStyle="bold"
-                        android:letterSpacing="0.08"/>
+                        android:letterSpacing="0.05"/>
 
                 </LinearLayout>
 
@@ -101,19 +101,54 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="BIG FLAVOUR.&#10;ZERO BORING BITES."
+                    android:text="EXPERIENCE SMART&#10;RESTAURANT SERVICE&#10;IN IJEBU ODE"
                     android:textColor="#FFFFFF"
-                    android:textSize="32sp"
+                    android:textSize="27sp"
                     android:textStyle="bold"
                     android:fontFamily="sans-serif-black"
                     android:lineSpacingMultiplier="0.95"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="WITH"
+                    android:textColor="#FF2438"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.18"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="DD KITCHEN APP"
+                    android:textColor="#FFFFFF"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-black"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:paddingStart="11dp"
+                    android:paddingEnd="11dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:text="FIRST OF ITS KIND"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.10"
+                    android:background="#B80018"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
-                    android:layout_marginTop="11dp">
+                    android:layout_marginTop="13dp">
 
                     <View
                         android:layout_width="36dp"
@@ -124,7 +159,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="9dp"
-                        android:text="Your next favourite meal starts here."
+                        android:text="Discover delicious food, conveniently."
                         android:textColor="#E8E8E8"
                         android:textSize="12sp"/>
 
