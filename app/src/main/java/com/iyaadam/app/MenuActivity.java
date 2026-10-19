@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,14 +19,32 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class MenuActivity extends AppCompatActivity {
 
+    private static final String MENU_API =
+            "https://iyaadam.uhd.com.ng/api/menu.php";
+
+    private static final String WHATSAPP_NUMBER =
+            "2349078917130";
+
+    private static final String RESTAURANT_NAME =
+            "DD KITCHEN";
+
+    private static final String RESTAURANT_ADDRESS =
+            "Off Olisa Road, Ijebu Ode, Ogun State, Nigeria";
+
     private RecyclerView menuRecycler;
+    private TextView restaurantName;
+    private TextView restaurantAddress;
+    private TextView menuStatus;
+    private TextView whatsappButton;
 
     private final List<Dish> allDishes = new ArrayList<>();
     private final List<Dish> displayedDishes = new ArrayList<>();
@@ -37,34 +54,35 @@ public class MenuActivity extends AppCompatActivity {
     private final ExecutorService executor =
             Executors.newSingleThreadExecutor();
 
-    private static final String MENU_API =
-            "https://iyaadam.uhd.com.ng/api/menu.php";
-
-    private static final String WHATSAPP_NUMBER =
-            "2347089364492";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_menu);
 
         initializeViews();
         setupRecyclerView();
         setupButtons();
+        updateBranding();
 
         loadLocalMenu();
         loadMenuFromServer();
     }
 
     private void initializeViews() {
+        menuRecycler = findViewById(R.id.menu_recycler);
+        restaurantName = findViewById(R.id.restaurant_name);
+        restaurantAddress = findViewById(R.id.restaurant_address);
+        menuStatus = findViewById(R.id.menu_status);
+        whatsappButton = findViewById(R.id.whatsapp_btn);
+    }
 
-        menuRecycler =
-                findViewById(R.id.menu_recycler);
+    private void updateBranding() {
+        restaurantName.setText(RESTAURANT_NAME);
+        restaurantAddress.setText(RESTAURANT_ADDRESS);
+        menuStatus.setText("Freshly prepared. Made with love.");
     }
 
     private void setupRecyclerView() {
-
         menuRecycler.setLayoutManager(
                 new LinearLayoutManager(this)
         );
@@ -73,11 +91,8 @@ public class MenuActivity extends AppCompatActivity {
                 this,
                 displayedDishes,
                 new DishAdapter.OnDishClickListener() {
-
                     @Override
                     public void onDishClick(Dish dish) {
-
-                        // Open dish details if/when available.
                         Toast.makeText(
                                 MenuActivity.this,
                                 dish.name,
@@ -87,15 +102,11 @@ public class MenuActivity extends AppCompatActivity {
 
                     @Override
                     public void onAddToCart(Dish dish) {
-
-                        // CORRECT CartManager method.
-                        CartManager
-                                .getInstance()
-                                .addToCart(dish);
+                        CartManager.getInstance().addToCart(dish);
 
                         Toast.makeText(
                                 MenuActivity.this,
-                                dish.name + " added to cart",
+                                dish.name + " added to basket",
                                 Toast.LENGTH_SHORT
                         ).show();
                     }
@@ -106,425 +117,224 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void setupButtons() {
-
-        ImageView backBtn =
-                findViewById(R.id.back_btn);
+        View backBtn = findViewById(R.id.back_btn);
 
         if (backBtn != null) {
-
-            backBtn.setOnClickListener(v ->
-                    finish()
-            );
+            backBtn.setOnClickListener(v -> finish());
         }
 
-        Button all =
-                findViewById(R.id.category_all);
+        setCategoryClick(R.id.category_all, "All");
+        setCategoryClick(R.id.category_african, "African");
+        setCategoryClick(R.id.category_continental, "Continental");
+        setCategoryClick(R.id.category_grills, "Grills");
+        setCategoryClick(R.id.category_rice, "Rice");
+        setCategoryClick(R.id.category_soups, "Soups");
 
-        Button african =
-                findViewById(R.id.category_african);
-
-        Button continental =
-                findViewById(R.id.category_continental);
-
-        Button grills =
-                findViewById(R.id.category_grills);
-
-        Button rice =
-                findViewById(R.id.category_rice);
-
-        Button soups =
-                findViewById(R.id.category_soups);
-
-        if (all != null) {
-            all.setOnClickListener(v ->
-                    showCategory("All")
-            );
-        }
-
-        if (african != null) {
-            african.setOnClickListener(v ->
-                    showCategory("African")
-            );
-        }
-
-        if (continental != null) {
-            continental.setOnClickListener(v ->
-                    showCategory("Continental")
-            );
-        }
-
-        if (grills != null) {
-            grills.setOnClickListener(v ->
-                    showCategory("Grills")
-            );
-        }
-
-        if (rice != null) {
-            rice.setOnClickListener(v ->
-                    showCategory("Rice")
-            );
-        }
-
-        if (soups != null) {
-            soups.setOnClickListener(v ->
-                    showCategory("Soups")
-            );
-        }
-
-        View customOrder =
-                findViewById(R.id.custom_order_btn);
+        View customOrder = findViewById(R.id.custom_order_btn);
 
         if (customOrder != null) {
-
-            customOrder.setOnClickListener(v -> {
-
-                Intent intent =
-                        new Intent(
-                                MenuActivity.this,
-                                CustomOrderActivity.class
-                        );
-
-                startActivity(intent);
-            });
+            customOrder.setOnClickListener(v ->
+                    startActivity(
+                            new Intent(
+                                    MenuActivity.this,
+                                    CustomOrderActivity.class
+                            )
+                    )
+            );
         }
 
-        TextView whatsapp =
-                findViewById(R.id.whatsapp_btn);
-
-        if (whatsapp != null) {
-
-            whatsapp.setOnClickListener(v ->
-                    openWhatsApp()
+        if (whatsappButton != null) {
+            whatsappButton.setOnClickListener(v ->
+                    openWhatsApp(
+                            "Hello DD Kitchen! I would like to make an order."
+                    )
             );
         }
     }
 
-    /**
-     * Temporary local menu.
-     * These dishes are displayed immediately while
-     * the live menu is loading from the server.
-     */
-    private void loadLocalMenu() {
+    private void setCategoryClick(int viewId, String category) {
+        Button button = findViewById(viewId);
 
+        if (button != null) {
+            button.setOnClickListener(v -> showCategory(category));
+        }
+    }
+
+    private void loadLocalMenu() {
         allDishes.clear();
 
-        allDishes.add(
-                new Dish(
-                        "fufu_ewedu",
-                        "Fufu & Ewedu",
-                        2500,
-                        "Freshly prepared fufu served with delicious ewedu soup.",
-                        "images",
-                        4.8,
-                        125,
-                        25,
-                        true
-                )
-        );
+        allDishes.add(new Dish(
+                "fufu_ewedu",
+                "Fufu & Ewedu",
+                2500,
+                "Traditional fufu served with delicious ewedu soup.",
+                "images", 4.8, 125, 25, true
+        ));
 
-        allDishes.add(
-                new Dish(
-                        "pounded_yam",
-                        "Pounded Yam",
-                        2500,
-                        "Smooth traditional pounded yam served with Nigerian soup.",
-                        "images2",
-                        4.7,
-                        98,
-                        25,
-                        true
-                )
-        );
+        allDishes.add(new Dish(
+                "pounded_yam",
+                "Pounded Yam",
+                2500,
+                "Smooth, freshly prepared pounded yam with Nigerian soup.",
+                "images2", 4.7, 98, 25, true
+        ));
 
-        allDishes.add(
-                new Dish(
-                        "jollof_chicken",
-                        "Jollof Rice & Chicken",
-                        3000,
-                        "Delicious Nigerian party-style jollof rice with chicken.",
-                        "images3",
-                        4.9,
-                        210,
-                        30,
-                        true
-                )
-        );
+        allDishes.add(new Dish(
+                "jollof_chicken",
+                "Jollof Rice & Chicken",
+                3000,
+                "Flavourful Nigerian jollof rice served with chicken.",
+                "images3", 4.9, 210, 30, true
+        ));
 
-        allDishes.add(
-                new Dish(
-                        "fried_rice",
-                        "Fried Rice & Chicken",
-                        3000,
-                        "Special fried rice served with tasty chicken.",
-                        "images4",
-                        4.7,
-                        145,
-                        30,
-                        true
-                )
-        );
+        allDishes.add(new Dish(
+                "fried_rice",
+                "Fried Rice & Chicken",
+                3000,
+                "Special fried rice paired with tasty chicken.",
+                "images4", 4.7, 145, 30, true
+        ));
 
-        allDishes.add(
-                new Dish(
-                        "white_rice",
-                        "White Rice & Stew",
-                        2500,
-                        "Steamed white rice served with rich Nigerian stew.",
-                        "images5",
-                        4.6,
-                        87,
-                        25,
-                        true
-                )
-        );
+        allDishes.add(new Dish(
+                "white_rice",
+                "White Rice & Stew",
+                2500,
+                "Steamed white rice served with rich Nigerian stew.",
+                "images5", 4.6, 87, 25, true
+        ));
 
-        allDishes.add(
-                new Dish(
-                        "pepper_soup",
-                        "Pepper Soup",
-                        2500,
-                        "Hot and spicy Nigerian pepper soup.",
-                        "images6",
-                        4.8,
-                        76,
-                        20,
-                        true
-                )
-        );
+        allDishes.add(new Dish(
+                "pepper_soup",
+                "Pepper Soup",
+                2500,
+                "A warming bowl of spicy Nigerian pepper soup.",
+                "images6", 4.8, 76, 20, true
+        ));
 
-        allDishes.add(
-                new Dish(
-                        "grilled_chicken",
-                        "Grilled Chicken",
-                        3500,
-                        "Well-seasoned and perfectly grilled chicken.",
-                        "images7",
-                        4.9,
-                        112,
-                        35,
-                        true
-                )
-        );
+        allDishes.add(new Dish(
+                "grilled_chicken",
+                "Grilled Chicken",
+                3500,
+                "Well-seasoned chicken, grilled to delicious perfection.",
+                "images7", 4.9, 112, 35, true
+        ));
 
-        allDishes.add(
-                new Dish(
-                        "beef_suya",
-                        "Beef Suya",
-                        2500,
-                        "Spicy Nigerian-style grilled beef suya.",
-                        "images8",
-                        4.8,
-                        134,
-                        20,
-                        true
-                )
-        );
+        allDishes.add(new Dish(
+                "beef_suya",
+                "Beef Suya",
+                2500,
+                "Spicy Nigerian-style grilled beef suya.",
+                "images8", 4.8, 134, 20, true
+        ));
 
         displayedDishes.clear();
         displayedDishes.addAll(allDishes);
-
         adapter.notifyDataSetChanged();
     }
 
-    /**
-     * Loads the current menu from the live backend.
-     */
     private void loadMenuFromServer() {
-
         executor.execute(() -> {
-
             HttpURLConnection connection = null;
 
             try {
+                URL url = new URL(MENU_API);
 
-                URL url =
-                        new URL(MENU_API);
-
-                connection =
-                        (HttpURLConnection)
-                                url.openConnection();
-
+                connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("GET");
                 connection.setConnectTimeout(10000);
                 connection.setReadTimeout(10000);
-                connection.setDoInput(true);
 
-                int responseCode =
-                        connection.getResponseCode();
+                int responseCode = connection.getResponseCode();
 
-                if (
-                        responseCode !=
-                                HttpURLConnection.HTTP_OK
-                ) {
-
+                if (responseCode != HttpURLConnection.HTTP_OK) {
                     return;
                 }
 
-                BufferedReader reader =
-                        new BufferedReader(
-                                new InputStreamReader(
-                                        connection.getInputStream()
-                                )
-                        );
+                StringBuilder response = new StringBuilder();
 
-                StringBuilder response =
-                        new StringBuilder();
+                try (BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(
+                                connection.getInputStream(),
+                                StandardCharsets.UTF_8
+                        )
+                )) {
+                    String line;
 
-                String line;
-
-                while (
-                        (line = reader.readLine())
-                                != null
-                ) {
-
-                    response.append(line);
+                    while ((line = reader.readLine()) != null) {
+                        response.append(line);
+                    }
                 }
 
-                reader.close();
+                JSONObject root = new JSONObject(response.toString());
 
-                JSONObject root =
-                        new JSONObject(
-                                response.toString()
-                        );
-
-                boolean success =
-                        root.optBoolean(
-                                "success",
-                                false
-                        );
-
-                if (!success) {
+                if (!root.optBoolean("success", false)) {
                     return;
                 }
 
-                JSONArray items =
-                        root.optJSONArray("items");
+                JSONArray items = root.optJSONArray("items");
 
-                if (
-                        items == null ||
-                        items.length() == 0
-                ) {
+                if (items == null || items.length() == 0) {
                     return;
                 }
 
-                List<Dish> serverDishes =
-                        new ArrayList<>();
+                List<Dish> serverDishes = new ArrayList<>();
 
-                for (
-                        int i = 0;
-                        i < items.length();
-                        i++
-                ) {
+                for (int i = 0; i < items.length(); i++) {
+                    JSONObject item = items.getJSONObject(i);
 
-                    JSONObject item =
-                            items.getJSONObject(i);
+                    String dishId = item.optString(
+                            "dish_id",
+                            item.optString("id", String.valueOf(i))
+                    );
 
-                    String dishId =
-                            item.optString(
-                                    "dish_id",
-                                    item.optString(
-                                            "id",
-                                            String.valueOf(i)
-                                    )
-                            );
+                    String name = item.optString("name", "Dish");
+                    String description = item.optString("description", "");
+                    int price = (int) item.optDouble("price", 0);
+                    String imageUrl = item.optString("image_url", "");
+                    double rating = item.optDouble("rating", 4.8);
+                    int reviewCount = item.optInt("review_count", 0);
+                    int prepTime = item.optInt("prep_time", 30);
 
-                    String name =
-                            item.optString(
-                                    "name",
-                                    "Dish"
-                            );
-
-                    String description =
-                            item.optString(
-                                    "description",
-                                    ""
-                            );
-
-                    double priceValue =
-                            item.optDouble(
-                                    "price",
-                                    0
-                            );
-
-                    int price =
-                            (int) priceValue;
-
-                    String imageUrl =
-                            item.optString(
-                                    "image_url",
-                                    ""
-                            );
-
-                    double rating =
-                            item.optDouble(
-                                    "rating",
-                                    4.8
-                            );
-
-                    int reviewCount =
-                            item.optInt(
-                                    "review_count",
-                                    0
-                            );
-
-                    int prepTime =
-                            item.optInt(
-                                    "prep_time",
-                                    30
-                            );
-
-                    boolean available =
-                            item.optInt(
-                                    "available",
-                                    1
-                            ) == 1;
+                    boolean available = item.optInt("available", 1) == 1;
 
                     if (!available) {
                         continue;
                     }
 
-                    serverDishes.add(
-                            new Dish(
-                                    dishId,
-                                    name,
-                                    price,
-                                    description,
-                                    imageUrl,
-                                    rating,
-                                    reviewCount,
-                                    prepTime,
-                                    true
-                            )
-                    );
+                    serverDishes.add(new Dish(
+                            dishId,
+                            name,
+                            price,
+                            description,
+                            imageUrl,
+                            rating,
+                            reviewCount,
+                            prepTime,
+                            true
+                    ));
                 }
 
                 runOnUiThread(() -> {
-
                     if (!serverDishes.isEmpty()) {
-
                         allDishes.clear();
-
-                        allDishes.addAll(
-                                serverDishes
-                        );
+                        allDishes.addAll(serverDishes);
 
                         displayedDishes.clear();
-
-                        displayedDishes.addAll(
-                                serverDishes
-                        );
+                        displayedDishes.addAll(serverDishes);
 
                         adapter.notifyDataSetChanged();
+
+                        if (menuStatus != null) {
+                            menuStatus.setText(
+                                    "Freshly prepared. Made with love."
+                            );
+                        }
                     }
                 });
 
             } catch (Exception ignored) {
-
-                // Keep the local menu if
-                // the server cannot be reached.
-
+                // Keep the local menu available if the server is unreachable.
             } finally {
-
                 if (connection != null) {
                     connection.disconnect();
                 }
@@ -533,27 +343,13 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void showCategory(String category) {
-
         displayedDishes.clear();
 
-        if (
-                category == null ||
-                category.equalsIgnoreCase("All")
-        ) {
-
-            displayedDishes.addAll(
-                    allDishes
-            );
-
+        if (category == null || category.equalsIgnoreCase("All")) {
+            displayedDishes.addAll(allDishes);
         } else {
-
             for (Dish dish : allDishes) {
-
-                if (matchesCategory(
-                        dish,
-                        category
-                )) {
-
+                if (matchesCategory(dish, category)) {
                     displayedDishes.add(dish);
                 }
             }
@@ -562,7 +358,6 @@ public class MenuActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
 
         if (displayedDishes.isEmpty()) {
-
             Toast.makeText(
                     this,
                     "No dishes found in this category",
@@ -571,98 +366,73 @@ public class MenuActivity extends AppCompatActivity {
         }
     }
 
-    private boolean matchesCategory(
-            Dish dish,
-            String category
-    ) {
+    private boolean matchesCategory(Dish dish, String category) {
+        String name = dish.name == null
+                ? ""
+                : dish.name.toLowerCase(Locale.ROOT);
 
-        String name =
-                dish.name == null
-                        ? ""
-                        : dish.name.toLowerCase();
+        String search = category.toLowerCase(Locale.ROOT);
 
-        String description =
-                dish.description == null
-                        ? ""
-                        : dish.description.toLowerCase();
+        switch (search) {
+            case "african":
+                return name.contains("fufu")
+                        || name.contains("ewedu")
+                        || name.contains("pounded")
+                        || name.contains("jollof")
+                        || name.contains("suya")
+                        || name.contains("pepper soup");
 
-        String search =
-                category.toLowerCase();
+            case "rice":
+                return name.contains("rice");
 
-        if (search.equals("african")) {
+            case "soups":
+                return name.contains("soup")
+                        || name.contains("ewedu");
 
-            return true;
+            case "grills":
+                return name.contains("grill")
+                        || name.contains("suya")
+                        || name.contains("chicken");
+
+            case "continental":
+                return !name.contains("fufu")
+                        && !name.contains("ewedu")
+                        && !name.contains("pounded")
+                        && !name.contains("suya")
+                        && !name.contains("jollof")
+                        && !name.contains("pepper soup");
+
+            default:
+                return true;
         }
-
-        if (search.equals("rice")) {
-
-            return name.contains("rice") ||
-                    description.contains("rice");
-        }
-
-        if (search.equals("soups")) {
-
-            return name.contains("soup") ||
-                    description.contains("soup") ||
-                    name.contains("ewedu");
-        }
-
-        if (search.equals("grills")) {
-
-            return name.contains("grill") ||
-                    name.contains("suya") ||
-                    name.contains("chicken");
-        }
-
-        if (search.equals("continental")) {
-
-            return !name.contains("fufu") &&
-                    !name.contains("ewedu") &&
-                    !name.contains("pounded") &&
-                    !name.contains("suya") &&
-                    !name.contains("jollof") &&
-                    !name.contains("fried rice");
-        }
-
-        return true;
     }
 
-    private void openWhatsApp() {
-
-        String message =
-                "Hello IyaAdam Kitchen, I would like to make an order.";
-
+    private void openWhatsApp(String message) {
         try {
+            String url = "https://wa.me/"
+                    + WHATSAPP_NUMBER
+                    + "?text="
+                    + Uri.encode(message);
 
-            String url =
-                    "https://wa.me/" +
-                            WHATSAPP_NUMBER +
-                            "?text=" +
-                            Uri.encode(message);
-
-            Intent intent =
-                    new Intent(
-                            Intent.ACTION_VIEW,
-                            Uri.parse(url)
-                    );
+            Intent intent = new Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse(url)
+            );
 
             startActivity(intent);
 
         } catch (Exception e) {
-
             Toast.makeText(
                     this,
-                    "WhatsApp is not available",
-                    Toast.LENGTH_SHORT
+                    "Unable to open WhatsApp. Please try again.",
+                    Toast.LENGTH_LONG
             ).show();
         }
     }
 
     @Override
     protected void onDestroy() {
-
         super.onDestroy();
-
         executor.shutdownNow();
     }
 }
