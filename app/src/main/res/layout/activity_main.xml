@@ -4,519 +4,566 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFF8F0">
+    android:background="#050505">
 
-    <!-- TOP BRAND BAR -->
-    <LinearLayout
+    <!-- MAIN SCROLLING CONTENT -->
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:background="#5B1724"
-        android:elevation="4dp">
-
-        <ImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:src="@drawable/ic_logo"
-            android:scaleType="fitCenter"
-            android:contentDescription="DD Kitchen logo"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:scrollbars="none">
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:orientation="vertical"
-            android:layout_marginStart="10dp">
+            android:paddingBottom="12dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="DD KITCHEN"
-                android:textColor="#FFFFFF"
-                android:textSize="21sp"
-                android:textStyle="bold"
-                android:letterSpacing="0.04"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="GOOD FOOD, GOOD MOOD."
-                android:textColor="#F5C9A8"
-                android:textSize="9sp"
-                android:letterSpacing="0.08"/>
-
-        </LinearLayout>
-
-        <FrameLayout
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            android:layout_marginEnd="8dp"
-            android:background="#773442">
-
-            <TextView
-                android:id="@+id/ic_notification"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="♧"
-                android:textColor="#FFFFFF"
-                android:textSize="24sp"
-                android:contentDescription="Notifications"
-                android:clickable="true"
-                android:focusable="true"/>
-
-            <TextView
-                android:id="@+id/notification_badge"
-                android:layout_width="17dp"
-                android:layout_height="17dp"
-                android:layout_gravity="top|end"
-                android:gravity="center"
-                android:text="0"
-                android:textColor="#FFFFFF"
-                android:textSize="9sp"
-                android:textStyle="bold"
-                android:background="#E87532"
-                android:visibility="gone"/>
-
-        </FrameLayout>
-
-        <FrameLayout
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            android:background="#773442">
-
-            <TextView
-                android:id="@+id/ic_cart_header"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="🛒"
-                android:textSize="21sp"
-                android:contentDescription="Shopping cart"
-                android:clickable="true"
-                android:focusable="true"/>
-
-            <TextView
-                android:id="@+id/cart_badge"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:layout_gravity="top|end"
-                android:gravity="center"
-                android:text="0"
-                android:textColor="#FFFFFF"
-                android:textSize="9sp"
-                android:textStyle="bold"
-                android:background="#E87532"
-                android:visibility="gone"/>
-
-        </FrameLayout>
-
-    </LinearLayout>
-
-    <!-- WELCOME SECTION -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingStart="18dp"
-        android:paddingEnd="18dp"
-        android:paddingTop="14dp"
-        android:paddingBottom="10dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Hungry? Let's fix that."
-            android:textColor="#35151B"
-            android:textSize="25sp"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Fresh flavours, made just for you."
-            android:textColor="#806A66"
-            android:textSize="13sp"/>
-
-    </LinearLayout>
-
-    <!-- SEARCH BAR -->
-    <LinearLayout
-        android:id="@+id/ic_search"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginBottom="13dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingStart="14dp"
-        android:paddingEnd="14dp"
-        android:background="#FFFFFF"
-        android:elevation="2dp"
-        android:clickable="true"
-        android:focusable="true">
-
-        <TextView
-            android:layout_width="32dp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="⌕"
-            android:textColor="#E87532"
-            android:textSize="30sp"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:text="Search your favourite meals"
-            android:textColor="#9A8983"
-            android:textSize="13sp"/>
-
-        <TextView
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            android:gravity="center"
-            android:text="☰"
-            android:textColor="#5B1724"
-            android:textSize="20sp"/>
-
-    </LinearLayout>
-
-    <!-- FEATURED FOOD BANNER -->
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="165dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginEnd="18dp">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/images8"
-            android:scaleType="centerCrop"
-            android:contentDescription="Featured delicious meal"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#990F1010"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center_vertical"
-            android:paddingStart="17dp"
-            android:paddingEnd="12dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="YOUR NEXT FAVOURITE MEAL"
-                android:textColor="#FFC18F"
-                android:textSize="10sp"
-                android:textStyle="bold"
-                android:letterSpacing="0.08"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="Good food.\\nGreat happiness."
-                android:textColor="#FFFFFF"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                android:fontFamily="serif"/>
-
-            <TextView
-                android:id="@+id/btn_order_now"
-                android:layout_width="132dp"
-                android:layout_height="37dp"
-                android:layout_marginTop="9dp"
-                android:gravity="center"
-                android:text="ORDER YOUR MEAL  →"
-                android:textColor="#FFFFFF"
-                android:textSize="10sp"
-                android:textStyle="bold"
-                android:background="#E87532"
-                android:clickable="true"
-                android:focusable="true"/>
-
-        </LinearLayout>
-
-    </FrameLayout>
-
-    <!-- FOOD CATEGORIES -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="13dp"
-        android:paddingBottom="8dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingStart="18dp"
-            android:paddingEnd="18dp"
-            android:paddingBottom="9dp">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Explore flavours"
-                android:textColor="#35151B"
-                android:textSize="18sp"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="MADE FRESH"
-                android:textColor="#E87532"
-                android:textSize="10sp"
-                android:textStyle="bold"/>
-
-        </LinearLayout>
-
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="76dp"
-            android:scrollbars="none"
-            android:fillViewport="false">
-
+            <!-- BRAND HEADER -->
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="78dp"
                 android:orientation="horizontal"
-                android:paddingStart="18dp"
-                android:paddingEnd="18dp">
+                android:gravity="center_vertical"
+                android:paddingStart="17dp"
+                android:paddingEnd="17dp"
+                android:background="#003B25">
+
+                <ImageView
+                    android:layout_width="49dp"
+                    android:layout_height="49dp"
+                    android:src="@drawable/ic_logo"
+                    android:scaleType="fitCenter"
+                    android:contentDescription="DD Kitchen logo"/>
 
                 <LinearLayout
-                    android:layout_width="104dp"
-                    android:layout_height="65dp"
-                    android:layout_marginEnd="9dp"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:padding="8dp"
-                    android:background="#F5E4D5">
-
-                    <ImageView
-                        android:layout_width="42dp"
-                        android:layout_height="45dp"
-                        android:src="@drawable/images"
-                        android:scaleType="centerCrop"
-                        android:contentDescription="African dishes"/>
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="11dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="6dp"
-                        android:text="African"
-                        android:textColor="#5B1724"
-                        android:textSize="11sp"
-                        android:textStyle="bold"/>
+                        android:text="DD KITCHEN"
+                        android:textColor="#FFFFFF"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.04"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="FRESH FOOD. BOLD FLAVOUR."
+                        android:textColor="#FFFFFF"
+                        android:textSize="9sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.08"/>
 
                 </LinearLayout>
 
+                <TextView
+                    android:id="@+id/ic_cart_header"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:gravity="center"
+                    android:text="🛒"
+                    android:textSize="23sp"
+                    android:background="#002719"
+                    android:contentDescription="Shopping cart"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+            </LinearLayout>
+
+            <!-- INTRODUCTION -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="23dp"
+                android:paddingBottom="18dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="WELCOME TO DD KITCHEN"
+                    android:textColor="#FF2438"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.14"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="BIG FLAVOUR.&#10;ZERO BORING BITES."
+                    android:textColor="#FFFFFF"
+                    android:textSize="32sp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-black"
+                    android:lineSpacingMultiplier="0.95"/>
+
                 <LinearLayout
-                    android:layout_width="118dp"
-                    android:layout_height="65dp"
-                    android:layout_marginEnd="9dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
-                    android:padding="8dp"
-                    android:background="#F1DFE1">
+                    android:layout_marginTop="11dp">
 
-                    <ImageView
-                        android:layout_width="42dp"
-                        android:layout_height="45dp"
-                        android:src="@drawable/images234"
-                        android:scaleType="centerCrop"
-                        android:contentDescription="Continental dishes"/>
+                    <View
+                        android:layout_width="36dp"
+                        android:layout_height="4dp"
+                        android:background="#F20D24"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="6dp"
-                        android:text="Continental"
-                        android:textColor="#5B1724"
-                        android:textSize="10sp"
-                        android:textStyle="bold"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="65dp"
-                    android:layout_marginEnd="9dp"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:padding="8dp"
-                    android:background="#FBE9D9">
-
-                    <ImageView
-                        android:layout_width="42dp"
-                        android:layout_height="45dp"
-                        android:src="@drawable/images10"
-                        android:scaleType="centerCrop"
-                        android:contentDescription="Snacks"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="6dp"
-                        android:text="Snacks"
-                        android:textColor="#5B1724"
-                        android:textSize="11sp"
-                        android:textStyle="bold"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="100dp"
-                    android:layout_height="65dp"
-                    android:layout_marginEnd="9dp"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:padding="8dp"
-                    android:background="#E5E8D8">
-
-                    <ImageView
-                        android:layout_width="42dp"
-                        android:layout_height="45dp"
-                        android:src="@drawable/images11"
-                        android:scaleType="centerCrop"
-                        android:contentDescription="Soups"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="6dp"
-                        android:text="Soups"
-                        android:textColor="#5B1724"
-                        android:textSize="11sp"
-                        android:textStyle="bold"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="110dp"
-                    android:layout_height="65dp"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:padding="8dp"
-                    android:background="#F1DFE1">
-
-                    <ImageView
-                        android:layout_width="42dp"
-                        android:layout_height="45dp"
-                        android:src="@drawable/images15"
-                        android:scaleType="centerCrop"
-                        android:contentDescription="Rice dishes"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="6dp"
-                        android:text="Rice"
-                        android:textColor="#5B1724"
-                        android:textSize="11sp"
-                        android:textStyle="bold"/>
+                        android:layout_marginStart="9dp"
+                        android:text="Your next favourite meal starts here."
+                        android:textColor="#E8E8E8"
+                        android:textSize="12sp"/>
 
                 </LinearLayout>
 
             </LinearLayout>
 
-        </HorizontalScrollView>
+            <!-- FEATURED FOOD BANNER -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="270dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginEnd="13dp">
 
-    </LinearLayout>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/images8"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="Featured DD Kitchen meal"/>
 
-    <!-- POPULAR DISHES HEADING -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="53dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingStart="18dp"
-        android:paddingEnd="18dp">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#66000000"/>
 
-        <View
-            android:layout_width="4dp"
-            android:layout_height="31dp"
-            android:background="#E87532"/>
+                <View
+                    android:layout_width="7dp"
+                    android:layout_height="match_parent"
+                    android:background="#F20D24"
+                    android:layout_gravity="start"/>
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_marginStart="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="17dp"
+                    android:paddingStart="11dp"
+                    android:paddingEnd="11dp"
+                    android:paddingTop="7dp"
+                    android:paddingBottom="7dp"
+                    android:text="THE SIGNATURE SELECTION"
+                    android:textColor="#FFFFFF"
+                    android:textSize="9sp"
+                    android:textStyle="bold"
+                    android:background="#F20D24"/>
 
-            <TextView
-                android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:orientation="vertical"
+                    android:padding="18dp"
+                    android:background="#D9000000">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="MADE TO MAKE YOU CRAVE MORE."
+                        android:textColor="#FFFFFF"
+                        android:textSize="21sp"
+                        android:textStyle="bold"
+                        android:fontFamily="sans-serif-black"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Freshly prepared meals. Memorable taste."
+                        android:textColor="#E8E8E8"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/btn_order_now"
+                        android:layout_width="165dp"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="13dp"
+                        android:gravity="center"
+                        android:text="EXPLORE OUR MENU  →"
+                        android:textColor="#FFFFFF"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:background="#F20D24"
+                        android:clickable="true"
+                        android:focusable="true"/>
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <!-- FOOD CATEGORIES -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Popular right now"
-                android:textColor="#35151B"
-                android:textSize="18sp"
-                android:textStyle="bold"/>
+                android:orientation="vertical"
+                android:paddingTop="24dp"
+                android:paddingBottom="13dp">
 
-            <TextView
-                android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="18dp"
+                    android:paddingEnd="18dp"
+                    android:text="WHAT ARE YOU CRAVING?"
+                    android:textColor="#FFFFFF"
+                    android:textSize="19sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="18dp"
+                    android:paddingEnd="18dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="13dp"
+                    android:text="Pick your flavour and enjoy every bite."
+                    android:textColor="#E8E8E8"
+                    android:textSize="12sp"/>
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="117dp"
+                    android:scrollbars="none"
+                    android:fillViewport="false">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp">
+
+                        <!-- AFRICAN -->
+                        <LinearLayout
+                            android:layout_width="94dp"
+                            android:layout_height="110dp"
+                            android:layout_marginEnd="10dp"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:background="#003B25">
+
+                            <ImageView
+                                android:layout_width="72dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/images"
+                                android:scaleType="centerCrop"
+                                android:contentDescription="African food"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="AFRICAN"
+                                android:textColor="#FFFFFF"
+                                android:textSize="10sp"
+                                android:textStyle="bold"/>
+
+                        </LinearLayout>
+
+                        <!-- CONTINENTAL -->
+                        <LinearLayout
+                            android:layout_width="94dp"
+                            android:layout_height="110dp"
+                            android:layout_marginEnd="10dp"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:background="#B80018">
+
+                            <ImageView
+                                android:layout_width="72dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/images234"
+                                android:scaleType="centerCrop"
+                                android:contentDescription="Continental food"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="CONTINENTAL"
+                                android:textColor="#FFFFFF"
+                                android:textSize="9sp"
+                                android:textStyle="bold"/>
+
+                        </LinearLayout>
+
+                        <!-- SMALL CHOPS -->
+                        <LinearLayout
+                            android:layout_width="94dp"
+                            android:layout_height="110dp"
+                            android:layout_marginEnd="10dp"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:background="#181818">
+
+                            <ImageView
+                                android:layout_width="72dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/images10"
+                                android:scaleType="centerCrop"
+                                android:contentDescription="Small chops"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="SMALL CHOPS"
+                                android:textColor="#FFFFFF"
+                                android:textSize="9sp"
+                                android:textStyle="bold"/>
+
+                        </LinearLayout>
+
+                        <!-- SOUPS -->
+                        <LinearLayout
+                            android:layout_width="94dp"
+                            android:layout_height="110dp"
+                            android:layout_marginEnd="10dp"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:background="#003B25">
+
+                            <ImageView
+                                android:layout_width="72dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/images11"
+                                android:scaleType="centerCrop"
+                                android:contentDescription="Soups"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="SOUPS"
+                                android:textColor="#FFFFFF"
+                                android:textSize="10sp"
+                                android:textStyle="bold"/>
+
+                        </LinearLayout>
+
+                        <!-- RICE -->
+                        <LinearLayout
+                            android:layout_width="94dp"
+                            android:layout_height="110dp"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:background="#B80018">
+
+                            <ImageView
+                                android:layout_width="72dp"
+                                android:layout_height="70dp"
+                                android:src="@drawable/images15"
+                                android:scaleType="centerCrop"
+                                android:contentDescription="Rice meals"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="RICE MEALS"
+                                android:textColor="#FFFFFF"
+                                android:textSize="10sp"
+                                android:textStyle="bold"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
+
+            </LinearLayout>
+
+            <!-- RED PROMOTIONAL PANEL -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="The dishes everyone loves"
-                android:textColor="#8C7770"
-                android:textSize="10sp"/>
+                android:layout_marginStart="14dp"
+                android:layout_marginEnd="14dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="16dp"
+                android:background="#B80018">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="WHEN HUNGER CALLS..."
+                        android:textColor="#FFFFFF"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.08"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="ANSWER WITH GREAT FOOD."
+                        android:textColor="#FFFFFF"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:fontFamily="sans-serif-black"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:gravity="center"
+                    android:text="✦"
+                    android:textColor="#FFFFFF"
+                    android:textSize="38sp"/>
+
+            </LinearLayout>
+
+            <!-- POPULAR DISHES HEADING -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingStart="17dp"
+                android:paddingEnd="17dp"
+                android:paddingTop="25dp"
+                android:paddingBottom="12dp">
+
+                <View
+                    android:layout_width="4dp"
+                    android:layout_height="42dp"
+                    android:background="#F20D24"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CUSTOMER FAVOURITES"
+                        android:textColor="#FFFFFF"
+                        android:textSize="17sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="The dishes people love."
+                        android:textColor="#E8E8E8"
+                        android:textSize="11sp"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/btn_view_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="VIEW ALL  →"
+                    android:textColor="#FF2438"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+            </LinearLayout>
+
+            <!-- EXISTING DISH LIST -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/dishes_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:paddingStart="7dp"
+                android:paddingEnd="7dp"
+                android:paddingBottom="12dp"
+                android:clipToPadding="false"/>
+
+            <!-- FOOTER -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:background="#003B25">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DD KITCHEN"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.14"/>
+
+                <View
+                    android:layout_width="42dp"
+                    android:layout_height="3dp"
+                    android:layout_marginTop="7dp"
+                    android:background="#F20D24"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:text="GOOD FOOD. GREAT MOMENTS."
+                    android:textColor="#FFFFFF"
+                    android:textSize="10sp"
+                    android:letterSpacing="0.08"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/btn_view_all"
-            android:layout_width="wrap_content"
-            android:layout_height="38dp"
-            android:gravity="center"
-            android:text="View menu  ›"
-            android:textColor="#B94D25"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            android:clickable="true"
-            android:focusable="true"/>
+    </ScrollView>
 
-    </LinearLayout>
-
-    <!-- DISH GRID -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/dishes_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:paddingTop="4dp"
-        android:paddingBottom="6dp"
-        android:clipToPadding="false"
-        android:background="#FFF8F0"/>
-
-    <!-- BOTTOM NAVIGATION -->
+    <!-- FIXED BOTTOM NAVIGATION -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="61dp"
+        android:layout_height="64dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="#FFFFFF"
-        android:elevation="8dp"
-        android:paddingTop="4dp"
-        android:paddingBottom="3dp">
+        android:paddingTop="5dp"
+        android:paddingBottom="4dp"
+        android:background="#003B25"
+        android:elevation="8dp">
 
+        <!-- HOME -->
         <LinearLayout
             android:id="@+id/ic_home"
             android:layout_width="0dp"
@@ -527,25 +574,26 @@
             android:clickable="true"
             android:focusable="true">
 
-            <ImageView
-                android:layout_width="23dp"
-                android:layout_height="23dp"
-                android:src="@drawable/ic_home"
-                android:tint="#5B1724"
-                android:contentDescription="Home"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⌂"
+                android:textColor="#F20D24"
+                android:textSize="26sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Home"
-                android:textColor="#5B1724"
-                android:textSize="10sp"
+                android:text="HOME"
+                android:textColor="#FFFFFF"
+                android:textSize="9sp"
                 android:textStyle="bold"/>
 
         </LinearLayout>
 
+        <!-- MENU -->
         <LinearLayout
-            android:id="@+id/ic_search_nav"
+            android:id="@+id/ic_search"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -554,22 +602,23 @@
             android:clickable="true"
             android:focusable="true">
 
-            <ImageView
-                android:layout_width="23dp"
-                android:layout_height="23dp"
-                android:src="@drawable/ic_search"
-                android:tint="#927D76"
-                android:contentDescription="Menu"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="☷"
+                android:textColor="#FFFFFF"
+                android:textSize="23sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Menu"
-                android:textColor="#927D76"
-                android:textSize="10sp"/>
+                android:text="MENU"
+                android:textColor="#FFFFFF"
+                android:textSize="9sp"/>
 
         </LinearLayout>
 
+        <!-- CART -->
         <LinearLayout
             android:id="@+id/ic_cart_nav"
             android:layout_width="0dp"
@@ -580,22 +629,22 @@
             android:clickable="true"
             android:focusable="true">
 
-            <ImageView
-                android:layout_width="23dp"
-                android:layout_height="23dp"
-                android:src="@drawable/ic_cart"
-                android:tint="#927D76"
-                android:contentDescription="Cart"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🛒"
+                android:textSize="21sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cart"
-                android:textColor="#927D76"
-                android:textSize="10sp"/>
+                android:text="CART"
+                android:textColor="#FFFFFF"
+                android:textSize="9sp"/>
 
         </LinearLayout>
 
+        <!-- MUSIC / ORDERS -->
         <LinearLayout
             android:id="@+id/ic_orders"
             android:layout_width="0dp"
@@ -606,22 +655,23 @@
             android:clickable="true"
             android:focusable="true">
 
-            <ImageView
-                android:layout_width="23dp"
-                android:layout_height="23dp"
-                android:src="@drawable/ic_orders"
-                android:tint="#927D76"
-                android:contentDescription="Music"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="♫"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Music"
-                android:textColor="#927D76"
-                android:textSize="10sp"/>
+                android:text="MUSIC"
+                android:textColor="#FFFFFF"
+                android:textSize="9sp"/>
 
         </LinearLayout>
 
+        <!-- PROFILE -->
         <LinearLayout
             android:id="@+id/ic_person"
             android:layout_width="0dp"
@@ -632,19 +682,19 @@
             android:clickable="true"
             android:focusable="true">
 
-            <ImageView
-                android:layout_width="23dp"
-                android:layout_height="23dp"
-                android:src="@drawable/ic_person"
-                android:tint="#927D76"
-                android:contentDescription="Profile"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="●"
+                android:textColor="#FFFFFF"
+                android:textSize="21sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Profile"
-                android:textColor="#927D76"
-                android:textSize="10sp"/>
+                android:text="PROFILE"
+                android:textColor="#FFFFFF"
+                android:textSize="9sp"/>
 
         </LinearLayout>
 
