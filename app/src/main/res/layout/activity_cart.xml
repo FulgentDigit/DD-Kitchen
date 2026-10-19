@@ -1,100 +1,193 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#06452F">
+<?xml version="1.0" encoding="utf-8"?><LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:background="#171717">
 
-    <!-- HEADER -->
+<!-- HEADER -->
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="68dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingStart="18dp"
+    android:paddingEnd="18dp"
+    android:background="#171717">
+
+    <ImageView
+        android:id="@+id/back_btn"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:padding="11dp"
+        android:src="@drawable/ic_back"
+        android:contentDescription="Go back"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginStart="12dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="YOUR BASKET"
+            android:textColor="#FFFFFF"
+            android:textSize="19sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.06" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Good food is worth sharing."
+            android:textColor="#BDBDBD"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DD"
+        android:textColor="#FF5138"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+</LinearLayout>
+
+<View
+    android:layout_width="match_parent"
+    android:layout_height="3dp"
+    android:background="#FF5138" />
+
+<!-- SECTION HEADING -->
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:paddingTop="20dp"
+    android:paddingBottom="12dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Almost yours."
+        android:textColor="#FFFFFF"
+        android:textSize="27sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Review your selection before checking out."
+        android:textColor="#BDBDBD"
+        android:textSize="13sp" />
+
+</LinearLayout>
+
+<!-- EMPTY CART MESSAGE -->
+<TextView
+    android:id="@+id/empty_msg"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:gravity="center"
+    android:padding="28dp"
+    android:text="Your basket is waiting for something delicious.\n\nGo back and add your favourite dishes."
+    android:textColor="#E6E0D8"
+    android:textSize="16sp"
+    android:lineSpacingExtra="6dp"
+    android:visibility="gone" />
+
+<!-- CART ITEMS -->
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/cart_recycler"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:clipToPadding="false"
+    android:paddingStart="12dp"
+    android:paddingEnd="12dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="18dp"
+    android:scrollbars="vertical" />
+
+<!-- ORDER SUMMARY -->
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:paddingTop="18dp"
+    android:paddingBottom="20dp"
+    android:background="#252525">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ORDER SUMMARY"
+        android:textColor="#BDBDBD"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        android:letterSpacing="0.12" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@color/header_green"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:paddingHorizontal="16dp"
-        android:orientation="horizontal">
-        <ImageView
-            android:id="@+id/back_btn"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:src="@drawable/ic_back"
-            android:contentDescription="Back" />
+        android:orientation="horizontal"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="16dp">
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="🛒 My Cart"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/gold"
-            android:layout_marginStart="16dp" />
+            android:text="Total amount"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/total_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="₦0"
+            android:textColor="#FF5138"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
     </LinearLayout>
 
-    <View android:layout_width="match_parent" android:layout_height="3dp" android:background="@color/alert_red" />
+    <Button
+        android:id="@+id/checkout_btn"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:backgroundTint="#FF5138"
+        android:text="CONTINUE TO CHECKOUT  →"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:letterSpacing="0.02"
+        android:enabled="false" />
 
-    <!-- EMPTY MESSAGE -->
     <TextView
-        android:id="@+id/empty_msg"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:textSize="16sp"
-        android:textColor="@color/cream_light"
-        android:background="#06452F" />
-
-    <!-- CART ITEMS -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/cart_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:paddingHorizontal="8dp"
-        android:paddingVertical="8dp"
-        android:background="#06452F" />
-
-    <!-- TOTAL & CHECKOUT -->
-    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@color/header_green"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="16dp">
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Freshly prepared. Carefully delivered."
+        android:textColor="#BDBDBD"
+        android:textSize="11sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginBottom="12dp">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Total Amount:"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="@color/gold" />
-            <TextView
-                android:id="@+id/total_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="₦0"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/white" />
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/checkout_btn"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:text="Proceed to Checkout →"
-            android:background="@color/gold"
-            android:textColor="@color/header_green"
-            android:textStyle="bold"
-            android:enabled="false" />
-    </LinearLayout>
+</LinearLayout>
 
 </LinearLayout>
