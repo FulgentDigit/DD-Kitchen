@@ -1,241 +1,401 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="#090B0A">
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#06452F"
-    android:padding="16dp">
+    android:orientation="vertical">
 
-    <!-- HEADER -->
-
+    <!-- DISTINCTIVE DD KITCHEN HEADER -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@color/header_green"
+        android:layout_height="76dp"
+        android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:paddingHorizontal="16dp"
-        android:orientation="horizontal">
+        android:paddingStart="18dp"
+        android:paddingEnd="18dp"
+        android:background="#101411">
 
         <ImageView
             android:id="@+id/back_btn"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:padding="10dp"
             android:src="@drawable/ic_back"
-            android:contentDescription="Back" />
+            android:background="#202722"
+            android:contentDescription="Go back" />
 
-        <TextView
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="💳 Checkout"
-            android:textSize="20sp"
+            android:orientation="vertical"
+            android:layout_marginStart="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DD KITCHEN"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="21sp"
+                android:letterSpacing="0.08" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CHECKOUT &amp; PAYMENT"
+                android:textColor="#A7B4AA"
+                android:textSize="10sp"
+                android:letterSpacing="0.14"
+                android:layout_marginTop="3dp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SECURE"
+            android:textColor="#FFFFFF"
             android:textStyle="bold"
-            android:textColor="@color/gold"
-            android:layout_marginStart="16dp" />
+            android:textSize="10sp"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="7dp"
+            android:background="#B7192B" />
 
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#E52536" />
+
+    <!-- SCROLLABLE CHECKOUT CONTENT -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:fillViewport="true">
+        android:fillViewport="false"
+        android:clipToPadding="false"
+        android:paddingBottom="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <!-- DELIVERY -->
+            android:orientation="vertical"
+            android:padding="18dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="📦 Delivery Information"
-                android:textSize="17sp"
+                android:text="Almost there."
+                android:textColor="#FFFFFF"
+                android:textSize="29sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Complete your details and transfer payment to confirm your order."
+                android:textColor="#AAB4AC"
+                android:textSize="14sp"
+                android:lineSpacingExtra="3dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="22dp" />
+
+            <!-- ORDER TOTAL -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:background="#123B2A">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="YOUR ORDER TOTAL"
+                    android:textColor="#C4D6CA"
+                    android:textStyle="bold"
+                    android:textSize="11sp"
+                    android:letterSpacing="0.12" />
+
+                <TextView
+                    android:id="@+id/total_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="₦0"
+                    android:textColor="#FFFFFF"
+                    android:textSize="32sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Please transfer the exact amount shown above."
+                    android:textColor="#D0DFD4"
+                    android:textSize="12sp"
+                    android:layout_marginTop="5dp" />
+
+            </LinearLayout>
+
+            <!-- DELIVERY DETAILS -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="01  /  DELIVERY DETAILS"
+                android:textColor="#FFFFFF"
                 android:textStyle="bold"
-                android:textColor="@color/gold"
-                android:layout_marginTop="18dp"
-                android:layout_marginBottom="12dp" />
+                android:textSize="14sp"
+                android:letterSpacing="0.05"
+                android:layout_marginTop="27dp"
+                android:layout_marginBottom="13dp" />
 
             <EditText
                 android:id="@+id/name_input"
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:hint="Full Name"
-                android:textColor="@color/white"
-                android:textColorHint="@color/cream_light"
-                android:background="@drawable/input_bg"
+                android:layout_height="54dp"
+                android:hint="Full name"
+                android:singleLine="true"
+                android:inputType="textPersonName|textCapWords"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#9CA69F"
+                android:backgroundTint="#48564D"
                 android:paddingHorizontal="14dp"
                 android:layout_marginBottom="12dp" />
 
             <EditText
                 android:id="@+id/phone_input"
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:hint="Phone Number"
+                android:layout_height="54dp"
+                android:hint="Phone number"
+                android:singleLine="true"
                 android:inputType="phone"
-                android:textColor="@color/white"
-                android:textColorHint="@color/cream_light"
-                android:background="@drawable/input_bg"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#9CA69F"
+                android:backgroundTint="#48564D"
                 android:paddingHorizontal="14dp"
                 android:layout_marginBottom="12dp" />
 
             <EditText
                 android:id="@+id/address_input"
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
-                android:hint="Delivery Address"
+                android:layout_height="100dp"
+                android:hint="Full delivery address"
                 android:gravity="top"
-                android:textColor="@color/white"
-                android:textColorHint="@color/cream_light"
-                android:background="@drawable/input_bg"
+                android:inputType="textPostalAddress|textMultiLine"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#9CA69F"
+                android:backgroundTint="#48564D"
                 android:padding="14dp"
-                android:layout_marginBottom="18dp" />
+                android:layout_marginBottom="8dp" />
 
-            <!-- TOTAL -->
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:background="@drawable/card_gold_border"
-                android:gravity="center_vertical"
-                android:paddingHorizontal="16dp"
-                android:layout_marginBottom="18dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Order Total"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/header_green" />
-
-                <TextView
-                    android:id="@+id/total_price"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="₦0"
-                    android:textSize="21sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/header_green" />
-
-            </LinearLayout>
-
-            <!-- PAYMENT -->
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="🏦 Bank Transfer"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/gold"
-                android:layout_marginBottom="10dp" />
-
+            <!-- PAYMENT DETAILS -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:background="@drawable/card_gold_border"
-                android:padding="18dp">
-
-                <ProgressBar
-                    android:id="@+id/progress_bar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:visibility="gone" />
+                android:padding="18dp"
+                android:background="#F3F5F1"
+                android:layout_marginTop="20dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Bank"
+                    android:text="02  /  PAY BY BANK TRANSFER"
+                    android:textColor="#10271B"
                     android:textStyle="bold"
-                    android:textColor="@color/header_green"
-                    android:textSize="13sp" />
+                    android:textSize="14sp"
+                    android:letterSpacing="0.03" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Transfer to the account below using your banking app."
+                    android:textColor="#58645B"
+                    android:textSize="12sp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginBottom="18dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="BANK"
+                    android:textColor="#67736A"
+                    android:textStyle="bold"
+                    android:textSize="10sp"
+                    android:letterSpacing="0.12" />
 
                 <TextView
                     android:id="@+id/bank_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Loading..."
+                    android:text="OPay"
+                    android:textColor="#10271B"
                     android:textStyle="bold"
-                    android:textColor="@color/header_green"
-                    android:textSize="18sp"
-                    android:layout_marginBottom="12dp" />
+                    android:textSize="19sp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="15dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#D9E0D9" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Account Name"
+                    android:text="ACCOUNT NAME"
+                    android:textColor="#67736A"
                     android:textStyle="bold"
-                    android:textColor="@color/header_green"
-                    android:textSize="13sp" />
+                    android:textSize="10sp"
+                    android:letterSpacing="0.12"
+                    android:layout_marginTop="15dp" />
 
                 <TextView
                     android:id="@+id/account_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Loading..."
-                    android:textColor="@color/header_green"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="12dp" />
+                    android:text="Adeniyi Ismail S."
+                    android:textColor="#10271B"
+                    android:textStyle="bold"
+                    android:textSize="17sp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="15dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#D9E0D9" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Account Number"
+                    android:text="ACCOUNT NUMBER"
+                    android:textColor="#67736A"
                     android:textStyle="bold"
-                    android:textColor="@color/header_green"
-                    android:textSize="13sp" />
+                    android:textSize="10sp"
+                    android:letterSpacing="0.12"
+                    android:layout_marginTop="15dp" />
 
                 <TextView
                     android:id="@+id/account_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Loading..."
+                    android:text="9078917130"
+                    android:textColor="#10271B"
                     android:textStyle="bold"
-                    android:textColor="@color/header_green"
-                    android:textSize="21sp"
-                    android:layout_marginBottom="12dp" />
+                    android:textSize="25sp"
+                    android:letterSpacing="0.04"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="13dp" />
+
+                <Button
+                    android:id="@+id/copy_account_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="COPY ACCOUNT NUMBER"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="#123B2A"
+                    android:stateListAnimator="@null" />
 
                 <TextView
                     android:id="@+id/payment_note"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text=""
-                    android:textColor="@color/header_green"
-                    android:textSize="13sp" />
+                    android:textColor="#58645B"
+                    android:textSize="12sp"
+                    android:lineSpacingExtra="3dp"
+                    android:layout_marginTop="14dp" />
 
             </LinearLayout>
 
+            <!-- IMPORTANT PAYMENT NOTICE -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="After making the transfer, tap the button below to submit your order."
-                android:textColor="@color/cream_light"
-                android:textSize="13sp"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="20dp" />
+                android:text="IMPORTANT: Please verify the account details before transferring. Your order is not proof of payment. DD Kitchen must verify receipt of funds before treating the order as paid."
+                android:textColor="#F0AAB0"
+                android:textSize="12sp"
+                android:lineSpacingExtra="3dp"
+                android:padding="14dp"
+                android:background="#281116"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="12dp" />
 
         </LinearLayout>
 
     </ScrollView>
 
-    <!-- SUBMIT -->
-
-    <Button
-        android:id="@+id/pay_btn"
+    <!-- FIXED BOTTOM ACTION -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:text="I've Made the Transfer ✓"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:textColor="@color/header_green"
-        android:background="@color/gold"
-        android:layout_marginTop="12dp" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="18dp"
+        android:paddingEnd="18dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="14dp"
+        android:background="#101411">
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:indeterminate="true"
+            android:indeterminateTint="#E52536"
+            android:visibility="gone"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/pay_btn"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:text="I'VE MADE THE TRANSFER  →"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#D91F32"
+            android:letterSpacing="0.03"
+            android:stateListAnimator="@null" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Order details will be sent to DD Kitchen on WhatsApp."
+            android:textColor="#AAB4AC"
+            android:textSize="10sp"
+            android:gravity="center"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
 
 </LinearLayout>
+
+<!-- FLOATING WHATSAPP BUTTON -->
+<TextView
+    android:id="@+id/whatsapp_float"
+    android:layout_width="58dp"
+    android:layout_height="58dp"
+    android:layout_gravity="bottom|end"
+    android:layout_marginEnd="16dp"
+    android:layout_marginBottom="150dp"
+    android:gravity="center"
+    android:text="WA"
+    android:textColor="#FFFFFF"
+    android:textStyle="bold"
+    android:textSize="17sp"
+    android:backgroundTint="#20C76A"
+    android:background="@drawable/dd_whatsapp_circle"
+    android:elevation="10dp"
+    android:contentDescription="Chat with DD Kitchen on WhatsApp"
+    android:clickable="true"
+    android:focusable="true" />
+
+</FrameLayout>
