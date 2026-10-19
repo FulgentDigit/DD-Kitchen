@@ -2,6 +2,7 @@ package com.iyaadam.app;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,78 +24,121 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        initializeDishes();
+        setupNavigation();
+        setupActionButtons();
+    }
+
+    private void initializeDishes() {
         dishesRecycler = findViewById(R.id.dishes_recycler);
+
+        if (dishesRecycler == null) {
+            Toast.makeText(
+                    this,
+                    "Dish list could not be loaded.",
+                    Toast.LENGTH_LONG
+            ).show();
+            return;
+        }
+
         dishesRecycler.setLayoutManager(
-                new GridLayoutManager(this, 2));
+                new GridLayoutManager(this, 2)
+        );
 
         dishes = createSampleDishes();
 
         adapter = new DishAdapter(this, dishes, this);
         dishesRecycler.setAdapter(adapter);
+    }
 
-        // Search area opens the existing menu.
-        findViewById(R.id.ic_search).setOnClickListener(v ->
-                openMenu());
+    private void setupNavigation() {
 
-        // Featured banner button.
-        findViewById(R.id.btn_order_now).setOnClickListener(v ->
-                openMenu());
-
-        // View all dishes.
-        findViewById(R.id.btn_view_all).setOnClickListener(v ->
-                openMenu());
-
-        // Shopping cart.
-        findViewById(R.id.ic_cart_nav).setOnClickListener(v ->
-                openCart());
-
-        findViewById(R.id.ic_cart_header).setOnClickListener(v ->
-                openCart());
-
-        // Customer profile.
-        findViewById(R.id.ic_person).setOnClickListener(v ->
-                startActivity(
-                        new Intent(this, ProfileActivity.class)));
-
-        // Existing music feature.
-        findViewById(R.id.ic_orders).setOnClickListener(v ->
-                startActivity(
-                        new Intent(this, MusicPlayerActivity.class)));
-
-        // Home tab.
-        findViewById(R.id.ic_home).setOnClickListener(v ->
+        // Home tab
+        setClickListener(R.id.ic_home, v ->
                 Toast.makeText(
-                        this,
+                        MainActivity.this,
                         "Welcome to DD Kitchen!",
                         Toast.LENGTH_SHORT
-                ).show());
+                ).show()
+        );
 
-        // Notifications.
-        findViewById(R.id.ic_notification).setOnClickListener(v ->
-                Toast.makeText(
-                        this,
-                        "No new notifications",
-                        Toast.LENGTH_SHORT
-                ).show());
+        // Search tab — use the ID in the current XML.
+        setClickListener(R.id.ic_search, v -> openMenu());
 
-        // Menu tab in the bottom navigation.
-        findViewById(R.id.ic_search_nav).setOnClickListener(v ->
-                openMenu());
+        // Cart tab
+        setClickListener(R.id.ic_cart_nav, v -> openCart());
+
+        // Orders/music tab — preserve the existing music feature.
+        setClickListener(R.id.ic_orders, v ->
+                startActivity(
+                        new Intent(
+                                MainActivity.this,
+                                MusicPlayerActivity.class
+                        )
+                )
+        );
+
+        // Customer profile
+        setClickListener(R.id.ic_person, v ->
+                startActivity(
+                        new Intent(
+                                MainActivity.this,
+                                ProfileActivity.class
+                        )
+                )
+        );
+    }
+
+    private void setupActionButtons() {
+
+        // Featured food banner
+        setClickListener(R.id.btn_order_now, v -> openMenu());
+
+        // View all dishes
+        setClickListener(R.id.btn_view_all, v -> openMenu());
+
+        // Cart button in the header
+        setClickListener(R.id.ic_cart_header, v -> openCart());
+
+        /*
+         * The latest activity_main.xml does not contain
+         * ic_notification or ic_search_nav.
+         * Their listeners have therefore been removed to
+         * prevent the previous compilation errors.
+         *
+         * The search action is handled by ic_search.
+         * The cart action is handled by ic_cart_nav and
+         * ic_cart_header.
+         */
+    }
+
+    private void setClickListener(
+            int viewId,
+            View.OnClickListener listener
+    ) {
+        View view = findViewById(viewId);
+
+        if (view != null) {
+            view.setOnClickListener(listener);
+        }
     }
 
     private void openMenu() {
-        Intent intent = new Intent(
-                MainActivity.this,
-                MenuActivity.class
+        startActivity(
+                new Intent(
+                        MainActivity.this,
+                        MenuActivity.class
+                )
         );
-        startActivity(intent);
     }
 
     private void openCart() {
-        startActivity(new Intent(
-                MainActivity.this,
-                CartActivity.class
-        ));
+        startActivity(
+                new Intent(
+                        MainActivity.this,
+                        CartActivity.class
+                )
+        );
     }
 
     private List<Dish> createSampleDishes() {
@@ -110,7 +154,8 @@ public class MainActivity extends AppCompatActivity
                 4.7,
                 152,
                 20,
-                true));
+                true
+        ));
 
         list.add(new Dish(
                 "2",
@@ -121,7 +166,8 @@ public class MainActivity extends AppCompatActivity
                 4.8,
                 198,
                 25,
-                true));
+                true
+        ));
 
         list.add(new Dish(
                 "3",
@@ -132,7 +178,8 @@ public class MainActivity extends AppCompatActivity
                 4.6,
                 87,
                 30,
-                true));
+                true
+        ));
 
         list.add(new Dish(
                 "4",
@@ -143,7 +190,8 @@ public class MainActivity extends AppCompatActivity
                 4.5,
                 124,
                 15,
-                true));
+                true
+        ));
 
         list.add(new Dish(
                 "5",
@@ -154,7 +202,8 @@ public class MainActivity extends AppCompatActivity
                 4.4,
                 76,
                 20,
-                true));
+                true
+        ));
 
         list.add(new Dish(
                 "6",
@@ -165,7 +214,8 @@ public class MainActivity extends AppCompatActivity
                 4.3,
                 95,
                 15,
-                true));
+                true
+        ));
 
         list.add(new Dish(
                 "7",
@@ -176,7 +226,8 @@ public class MainActivity extends AppCompatActivity
                 4.9,
                 213,
                 25,
-                true));
+                true
+        ));
 
         list.add(new Dish(
                 "8",
@@ -187,7 +238,8 @@ public class MainActivity extends AppCompatActivity
                 4.2,
                 64,
                 18,
-                true));
+                true
+        ));
 
         return list;
     }
@@ -203,6 +255,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void addDishToCart(Dish dish) {
+
         CartManager.getInstance().addToCart(dish);
 
         Toast.makeText(
