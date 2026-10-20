@@ -10,16 +10,20 @@ workflows:
 
     scripts:
       - name: Set Android SDK location
-        script: 'echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/local.properties"'
+        script: |
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/local.properties"
 
       - name: Generate Gradle Wrapper
-        script: 'gradle wrapper --gradle-version 8.14.1 && chmod +x gradlew'
+        script: |
+          gradle wrapper --gradle-version 8.14.1
+          chmod +x gradlew
 
       - name: Build DD Kitchen Debug APK
-        script: './gradlew clean assembleDebug --stacktrace'
+        script: |
+          ./gradlew clean assembleDebug --stacktrace
 
     artifacts:
-      - 'app/build/outputs/apk/debug/app-debug.apk'
+      - app/build/outputs/apk/debug/app-debug.apk
 
   dd-kitchen-release:
     name: DD-Kitchen Signed Release
@@ -31,20 +35,60 @@ workflows:
         - dd-kitchen-upload
       vars:
         PACKAGE_NAME: "com.ddkitchen.app"
-      groups:
-        - dd-kitchen-secrets
 
     scripts:
       - name: Set Android SDK location
-        script: 'echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/local.properties"'
+        script: |
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/local.properties"
 
       - name: Generate Gradle Wrapper
-        script: 'gradle wrapper --gradle-version 8.14.1 && chmod +x gradlew'
-
-      - name: Build signed Android App Bundle
         script: |
+          gradle wrapper --gradle-version 8.14.1
+          chmod +x gradlew
+
+      - name: Verify Android signing configuration
+        script: |
+          set -e
+          echo "Checking Android signing configuration..."
+
+          if [ -z "${CM_KEYSTORE_PATH:-}" ]; then
+            echo "ERROR: CM_KEYSTORE_PATH is not set."
+            echo "Check the Android signing configuration in Codemagic."
+            exit 1
+          fi
+
+          if [ -z "${CM_KEYSTORE_PASSWORD:-}" ] ||
+             [ -z "${CM_KEY_ALIAS:-}" ] ||
+             [ -z "${CM_KEY_PASSWORD:-}" ]; then
+            echo "ERROR: One or more signing credentials are missing."
+            exit 1
+          fi
+
+          if [ ! -f "$CM_KEYSTORE_PATH" ]; then
+            echo "ERROR: The configured keystore file was not found."
+            exit 1
+          fi
+
+          echo "Keystore file and signing variables are available."
+
+      - name: Build signed DD Kitchen AAB
+        script: |
+          set -e
           ./gradlew clean bundleRelease --stacktrace
 
+      - name: Verify release AAB
+        script: |
+          set -e
+          AAB="app/build/outputs/bundle/release/app-release.aab"
+
+          if [ ! -f "$AAB" ]; then
+            echo "ERROR: Release AAB was not generated."
+            exit 1
+          fi
+
+          echo "Release AAB generated successfully."
+          ls -lh "$AAB"
+
     artifacts:
-      - 'app/build/outputs/bundle/release/*.aab'
-      - 'app/build/outputs/mapping/release/mapping.txt'
+      - app/build/outputs/bundle/release/*.aab
+      - app/build/outputs/mapping/release/mapping.txt
