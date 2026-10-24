@@ -27,7 +27,7 @@ public class CheckoutActivity extends AppCompatActivity {
     private static final String BANK_NAME = "First Bank";
     private static final String ACCOUNT_NAME = "Chicken & Co.";
     private static final String ACCOUNT_NUMBER = "1234678910";
-    private static final String WHATSAPP_NUMBER = "2349078917130";
+    private static final String WHATSAPP_NUMBER = "2349137282177";
 
     private EditText nameInput;
     private EditText phoneInput;
