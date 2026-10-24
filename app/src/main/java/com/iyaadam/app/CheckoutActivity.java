@@ -23,9 +23,10 @@ import java.util.Locale;
 
 public class CheckoutActivity extends AppCompatActivity {
 
-    private static final String BANK_NAME = "OPay";
-    private static final String ACCOUNT_NAME = "Adeniyi Ismail S.";
-    private static final String ACCOUNT_NUMBER = "9078917130";
+    private static final String RESTAURANT_NAME = "Chicken and Co.";
+    private static final String BANK_NAME = "First Bank";
+    private static final String ACCOUNT_NAME = "Chicken & Co.";
+    private static final String ACCOUNT_NUMBER = "1234678910";
     private static final String WHATSAPP_NUMBER = "2349078917130";
 
     private EditText nameInput;
@@ -87,13 +88,17 @@ public class CheckoutActivity extends AppCompatActivity {
         accountNumberTV.setText(ACCOUNT_NUMBER);
 
         paymentNoteTV.setText(
-                "Transfer the exact order amount to the account above. " +
-                "Tap SUBMIT ORDER to open WhatsApp with your order details. " +
-                "Review the message and tap Send. Payment must be confirmed."
+                "Transfer the exact order amount to the First Bank account above. " +
+                "Tap Submit Order to open WhatsApp with your order details. " +
+                "Review the message and tap Send. Your payment must be confirmed."
         );
     }
 
     private void updateTotal() {
+        if (totalPriceTV == null) {
+            return;
+        }
+
         int total = CartManager.getInstance().getTotalPrice();
 
         totalPriceTV.setText(
@@ -107,7 +112,7 @@ public class CheckoutActivity extends AppCompatActivity {
 
         if (clipboard != null) {
             ClipData clip = ClipData.newPlainText(
-                    "OPay Account Number",
+                    "First Bank Account Number",
                     ACCOUNT_NUMBER
             );
 
@@ -123,7 +128,8 @@ public class CheckoutActivity extends AppCompatActivity {
 
     private void openWhatsAppChat() {
         openWhatsAppWithMessage(
-                "Hello DD Kitchen, I need assistance with my food order."
+                "Hello " + RESTAURANT_NAME +
+                ", I need assistance with my food order."
         );
     }
 
@@ -194,7 +200,7 @@ public class CheckoutActivity extends AppCompatActivity {
             return;
         }
 
-        // Copy the current cart so the message uses a consistent snapshot.
+        // Take a snapshot of the current cart.
         List<CartManager.CartItem> orderItems =
                 new ArrayList<>(cartItems);
 
@@ -210,9 +216,13 @@ public class CheckoutActivity extends AppCompatActivity {
 
         openingWhatsApp = true;
         payBtn.setEnabled(false);
-        payBtn.setText("OPENING WHATSAPP...");
+        payBtn.setText("Opening WhatsApp...");
         progressBar.setVisibility(View.GONE);
 
+        openOrderWhatsApp(message);
+    }
+
+    private void openOrderWhatsApp(String message) {
         try {
             String encodedMessage = URLEncoder.encode(
                     message,
@@ -255,7 +265,7 @@ public class CheckoutActivity extends AppCompatActivity {
     ) {
         StringBuilder message = new StringBuilder();
 
-        message.append("HELLO DD KITCHEN!\n");
+        message.append("Hello Chicken & Co.!\n");
         message.append("I would like to place a food order.\n\n");
 
         message.append("CUSTOMER DETAILS\n");
@@ -268,12 +278,11 @@ public class CheckoutActivity extends AppCompatActivity {
         message.append("ORDER DETAILS\n");
 
         for (CartManager.CartItem cartItem : items) {
-            Dish dish = cartItem.dish;
-
-            if (dish == null) {
+            if (cartItem == null || cartItem.dish == null) {
                 continue;
             }
 
+            Dish dish = cartItem.dish;
             int quantity = cartItem.quantity;
             int itemTotal = dish.price * quantity;
 
@@ -295,7 +304,7 @@ public class CheckoutActivity extends AppCompatActivity {
         message.append("Account Number: ").append(ACCOUNT_NUMBER).append("\n\n");
 
         message.append(
-                "Please confirm my order and payment after checking the transfer."
+                "Please confirm my order and payment after verifying the transfer."
         );
 
         return message.toString();
