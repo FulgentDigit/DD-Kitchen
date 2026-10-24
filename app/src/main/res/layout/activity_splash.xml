@@ -1,81 +1,76 @@
-<?xml version="1.0" encoding="utf-8"?><LinearLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?><LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-android:gravity="center"
 android:orientation="vertical"
-android:padding="24dp"
-android:background="#071D16">
+android:gravity="center"
+android:padding="28dp"
+android:background="#111111">
 
-<!-- GOLD ACCENT -->
+<!-- Gold brand accent -->
 <View
-    android:layout_width="65dp"
+    android:layout_width="76dp"
     android:layout_height="4dp"
-    android:background="@color/gold"/>
+    android:background="#F4B942"
+    android:layout_marginBottom="28dp" />
 
-<!-- DD KITCHEN LOGO -->
+<!-- Restaurant symbol -->
 <TextView
-    android:layout_width="120dp"
-    android:layout_height="120dp"
-    android:layout_marginTop="28dp"
+    android:layout_width="112dp"
+    android:layout_height="112dp"
     android:gravity="center"
-    android:text="DD"
-    android:textColor="#071D16"
-    android:textSize="48sp"
-    android:textStyle="bold"
-    android:fontFamily="serif"
-    android:background="@drawable/logo_circle"/>
+    android:text="🍗"
+    android:textSize="62sp"
+    android:background="#25211A"
+    android:elevation="8dp"
+    android:contentDescription="Chicken and Co. restaurant logo" />
 
-<!-- BRAND NAME -->
+<!-- Restaurant name -->
 <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="25dp"
+    android:layout_marginTop="26dp"
     android:gravity="center"
-    android:text="DD KITCHEN"
-    android:textColor="@color/gold"
-    android:textSize="34sp"
+    android:text="Chicken and Co."
+    android:textColor="#F4B942"
+    android:textSize="30sp"
     android:textStyle="bold"
-    android:fontFamily="serif"
-    android:letterSpacing="0.06"/>
+    android:fontFamily="sans" />
 
-<!-- BRAND TAGLINE -->
+<!-- Tagline -->
 <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="12dp"
     android:gravity="center"
-    android:text="GOOD FOOD. GREAT MOMENTS."
-    android:textColor="#FFFFFF"
-    android:textSize="13sp"
-    android:textStyle="bold"
-    android:letterSpacing="0.12"/>
+    android:text="Delicious meals. Great moments. Made with love."
+    android:textColor="#F5E8C9"
+    android:textSize="15sp"
+    android:lineSpacingExtra="4dp" />
 
+<!-- Loading indicator -->
+<ProgressBar
+    android:layout_width="42dp"
+    android:layout_height="42dp"
+    android:layout_marginTop="42dp"
+    android:indeterminate="true"
+    android:indeterminateTint="#F4B942" />
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="14dp"
+    android:text="Preparing something delicious..."
+    android:textColor="#D0CCC3"
+    android:textSize="13sp" />
+
+<!-- Location -->
 <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
+    android:layout_marginTop="42dp"
     android:gravity="center"
-    android:text="Delicious meals, made with love."
-    android:textColor="#C6D8CE"
-    android:textSize="14sp"/>
-
-<!-- GOLD DIVIDER -->
-<View
-    android:layout_width="45dp"
-    android:layout_height="2dp"
-    android:layout_marginTop="30dp"
-    android:background="@color/gold"/>
-
-<!-- FOOTER -->
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="24dp"
-    android:gravity="center"
-    android:text="YOUR TABLE. YOUR TASTE. YOUR EXPERIENCE."
-    android:textColor="#D9E9E1"
-    android:textSize="9sp"
-    android:letterSpacing="0.08"/>
+    android:text="Ibadan Road, Ijebu Ode, Ogun State"
+    android:textColor="#B8A783"
+    android:textSize="12sp" />
 
 </LinearLayout>
