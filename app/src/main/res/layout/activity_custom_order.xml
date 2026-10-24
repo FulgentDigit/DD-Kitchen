@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginStart="10dp"
-                android:text="Custom Order"
+                android:text="Chicken and Co."
                 android:textColor="#FFFFFF"
                 android:textSize="23sp"
                 android:textStyle="bold" />
@@ -59,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Can't find your preferred meal on our menu? No problem. Describe your special request below or simply record a voice note."
+            android:text="Can't find your preferred meal on our menu? No problem! Describe your special request below or record a voice note."
             android:textColor="#D8E8E2"
             android:textSize="14sp"
             android:lineSpacingExtra="3dp" />
@@ -82,12 +82,12 @@
             android:layout_marginTop="8dp"
             android:background="#FFFFFF"
             android:gravity="top|start"
-            android:hint="Example: I want pounded yam with extra egusi soup, 3 pieces of meat and little pepper..."
+            android:hint="Example: Pounded yam with extra egusi soup, 3 pieces of meat and little pepper..."
             android:padding="15dp"
             android:textColor="#222222"
             android:textColorHint="#888888"
             android:textSize="14sp"
-            android:inputType="textMultiLine"
+            android:inputType="textMultiLine|textCapSentences"
             android:maxLines="7" />
 
         <!-- VOICE REQUEST -->
@@ -130,25 +130,79 @@
 
         </LinearLayout>
 
-        <!-- SUBMIT -->
+        <!-- SUBMIT CUSTOM REQUEST -->
         <Button
             android:id="@+id/submit_custom_order"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_marginTop="28dp"
-            android:text="✓  Submit Custom Request"
+            android:text="✓ Submit Custom Request"
             android:textAllCaps="false"
-            android:textColor="#FFFFFF"
+            android:textColor="#002D21"
             android:textSize="16sp"
             android:textStyle="bold"
             android:backgroundTint="@color/gold" />
+
+        <!-- WHATSAPP CONTACT -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:text="Need help with your order?"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/whatsapp_btn"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="10dp"
+            android:text="Chat with us on WhatsApp"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:backgroundTint="#25D366" />
+
+        <!-- RESTAURANT CONTACT DETAILS -->
+        <TextView
+            android:id="@+id/restaurant_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:text="Chicken and Co."
+            android:textColor="@color/gold"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/restaurant_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:gravity="center"
+            android:text="Ibadan Road, Ijebu Ode, Ogun State, Nigeria"
+            android:textColor="#D8E8E2"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:gravity="center"
+            android:text="WhatsApp: 07089364492"
+            android:textColor="#AFC6BC"
+            android:textSize="13sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
             android:gravity="center"
-            android:text="IyaAdam Kitchen • Home of African &amp; Continental Dishes"
+            android:text="Delicious Meals. Great Moments. Made with Love."
             android:textColor="#AFC6BC"
             android:textSize="11sp" />
 
