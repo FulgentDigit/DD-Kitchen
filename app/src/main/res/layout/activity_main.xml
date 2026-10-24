@@ -1,748 +1,722 @@
-<?xml version="1.0" encoding="utf-8"?><androidx.coordinatorlayout.widget.CoordinatorLayout
+<?xml version="1.0" encoding="utf-8"?><LinearLayout
 xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
+android:orientation="vertical"
 android:background="#063B2B">
 
-<LinearLayout
+<!-- SCROLLABLE HOMEPAGE -->
+<ScrollView
+    android:id="@+id/home_scroll"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#063B2B">
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:fillViewport="false"
+    android:clipToPadding="false"
+    android:scrollbars="none">
 
-    <!-- SCROLLABLE HOMEPAGE -->
-    <ScrollView
-        android:id="@+id/home_scroll"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:fillViewport="false"
-        android:clipToPadding="false"
-        android:scrollbars="none">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="20dp"
+        android:background="#063B2B">
 
-        <LinearLayout
+        <!-- PREMIUM HEADER -->
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingBottom="20dp"
             android:background="#063B2B">
 
-            <!-- PREMIUM HEADER -->
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#063B2B">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal"
-                    android:paddingStart="18dp"
-                    android:paddingEnd="18dp"
-                    android:paddingTop="12dp"
-                    android:paddingBottom="20dp">
-
-                    <!-- OFFICIAL LOGO -->
-                    <ImageView
-                        android:id="@+id/header_logo"
-                        android:layout_width="match_parent"
-                        android:layout_height="190dp"
-                        android:src="@drawable/hp"
-                        android:scaleType="fitCenter"
-                        android:adjustViewBounds="true"
-                        android:background="@android:color/transparent"
-                        android:contentDescription="Chicken and Co. official logo" />
-
-                    <!-- GOLD ACCENT -->
-                    <View
-                        android:layout_width="58dp"
-                        android:layout_height="4dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="14dp"
-                        android:background="#F4B942" />
-
-                    <!-- WELCOME TEXT -->
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="WELCOME TO"
-                        android:textColor="#FFF2CF"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:letterSpacing="0.14"
-                        android:shadowColor="#001B13"
-                        android:shadowDx="2"
-                        android:shadowDy="3"
-                        android:shadowRadius="2" />
-
-                    <!-- RESTAURANT NAME -->
-                    <TextView
-                        android:id="@+id/restaurant_heading"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
-                        android:gravity="center"
-                        android:text="CHICKEN &amp; CO."
-                        android:textColor="#F4B942"
-                        android:textSize="32sp"
-                        android:textStyle="bold"
-                        android:letterSpacing="0.025"
-                        android:shadowColor="#00170F"
-                        android:shadowDx="3"
-                        android:shadowDy="5"
-                        android:shadowRadius="2" />
-
-                    <!-- TAGLINE -->
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:gravity="center"
-                        android:text="Delicious meals. Great moments. Made with love."
-                        android:textColor="#FFFFFF"
-                        android:textSize="14sp"
-                        android:lineSpacingExtra="3dp" />
-
-                </LinearLayout>
-
-                <!-- CART BUTTON -->
-                <TextView
-                    android:id="@+id/ic_cart_header"
-                    android:layout_width="46dp"
-                    android:layout_height="46dp"
-                    android:layout_gravity="top|end"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginEnd="12dp"
-                    android:gravity="center"
-                    android:text="🛒"
-                    android:textSize="23sp"
-                    android:background="#174F3B"
-                    android:elevation="5dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:contentDescription="Open shopping cart" />
-
-            </FrameLayout>
-
-            <!-- LOCATION / WELCOME MESSAGE -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="18dp"
-                android:layout_marginEnd="18dp"
-                android:layout_marginTop="2dp"
                 android:orientation="vertical"
-                android:padding="14dp"
-                android:background="#104C39">
+                android:gravity="center_horizontal"
+                android:paddingStart="18dp"
+                android:paddingEnd="18dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="20dp">
+
+                <ImageView
+                    android:id="@+id/header_logo"
+                    android:layout_width="match_parent"
+                    android:layout_height="190dp"
+                    android:src="@drawable/hp"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Chicken and Co. official logo" />
+
+                <View
+                    android:layout_width="58dp"
+                    android:layout_height="4dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="14dp"
+                    android:background="#F4B942" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="GOOD FOOD, GREAT MOMENTS"
-                    android:textColor="#F4B942"
+                    android:gravity="center"
+                    android:text="WELCOME TO"
+                    android:textColor="#FFF2CF"
+                    android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textSize="13sp"
-                    android:letterSpacing="0.06" />
+                    android:letterSpacing="0.14"
+                    android:shadowColor="#001B13"
+                    android:shadowDx="2"
+                    android:shadowDy="3"
+                    android:shadowRadius="2" />
+
+                <TextView
+                    android:id="@+id/restaurant_heading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:text="CHICKEN &amp; CO."
+                    android:textColor="#F4B942"
+                    android:textSize="32sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.025"
+                    android:shadowColor="#00170F"
+                    android:shadowDx="3"
+                    android:shadowDy="5"
+                    android:shadowRadius="2" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:text="Your next favourite meal is waiting for you."
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="Delicious meals. Great moments. Made with love."
                     android:textColor="#FFFFFF"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textSize="14sp"
+                    android:lineSpacingExtra="3dp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/ic_cart_header"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:layout_gravity="top|end"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="12dp"
+                android:gravity="center"
+                android:text="🛒"
+                android:textSize="23sp"
+                android:background="#174F3B"
+                android:elevation="5dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:contentDescription="Open shopping cart" />
+
+        </FrameLayout>
+
+        <!-- LOCATION AND WELCOME -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginTop="2dp"
+            android:orientation="vertical"
+            android:padding="14dp"
+            android:background="#104C39">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="GOOD FOOD, GREAT MOMENTS"
+                android:textColor="#F4B942"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:letterSpacing="0.06" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Your next favourite meal is waiting for you."
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Ibadan Road, Ijebu Ode, Ogun State, Nigeria"
+                android:textColor="#DCEBE2"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <!-- HERO FOOD IMAGE -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginTop="20dp"
+            android:background="#104C39"
+            android:elevation="5dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/images8"
+                android:scaleType="centerCrop"
+                android:contentDescription="Featured delicious meal" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#99031F16" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MADE FRESH. SERVED WITH LOVE."
+                    android:textColor="#F4B942"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.05" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="Ibadan Road, Ijebu Ode, Ogun State, Nigeria"
-                    android:textColor="#DCEBE2"
-                    android:textSize="12sp" />
-
-            </LinearLayout>
-
-            <!-- HERO FOOD IMAGE -->
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="220dp"
-                android:layout_marginStart="18dp"
-                android:layout_marginEnd="18dp"
-                android:layout_marginTop="20dp"
-                android:background="#104C39"
-                android:elevation="5dp">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/images8"
-                    android:scaleType="centerCrop"
-                    android:contentDescription="Featured delicious meal" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#99031F16" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:orientation="vertical"
-                    android:padding="18dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="MADE FRESH. SERVED WITH LOVE."
-                        android:textColor="#F4B942"
-                        android:textSize="11sp"
-                        android:textStyle="bold"
-                        android:letterSpacing="0.05" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="Taste Something Special"
-                        android:textColor="#FFFFFF"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        android:shadowColor="#000000"
-                        android:shadowDx="2"
-                        android:shadowDy="3"
-                        android:shadowRadius="3" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Delicious meals for every moment."
-                        android:textColor="#FFF4D8"
-                        android:textSize="13sp" />
-
-                    <Button
-                        android:id="@+id/btn_order_now"
-                        android:layout_width="wrap_content"
-                        android:layout_height="48dp"
-                        android:layout_marginTop="12dp"
-                        android:minWidth="145dp"
-                        android:text="ORDER NOW  →"
-                        android:textColor="#063B2B"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:backgroundTint="#F4B942"
-                        android:elevation="4dp" />
-
-                </LinearLayout>
-
-            </FrameLayout>
-
-            <!-- CATEGORIES HEADING -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="18dp"
-                android:layout_marginEnd="18dp"
-                android:layout_marginTop="26dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="EXPLORE OUR MENU"
-                        android:textColor="#F4B942"
-                        android:textSize="11sp"
-                        android:textStyle="bold"
-                        android:letterSpacing="0.08" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:text="What are you craving?"
-                        android:textColor="#FFFFFF"
-                        android:textSize="21sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <!-- CATEGORY CARDS -->
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:paddingStart="18dp"
-                android:paddingEnd="18dp"
-                android:scrollbars="none">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <!-- AFRICAN -->
-                    <LinearLayout
-                        android:layout_width="126dp"
-                        android:layout_height="150dp"
-                        android:layout_marginEnd="10dp"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:background="#104C39"
-                        android:padding="8dp"
-                        android:elevation="4dp">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:src="@drawable/images"
-                            android:scaleType="centerCrop"
-                            android:contentDescription="African dishes" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="7dp"
-                            android:gravity="center"
-                            android:text="African"
-                            android:textColor="#FFFFFF"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                    <!-- CONTINENTAL -->
-                    <LinearLayout
-                        android:layout_width="126dp"
-                        android:layout_height="150dp"
-                        android:layout_marginEnd="10dp"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:background="#104C39"
-                        android:padding="8dp"
-                        android:elevation="4dp">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:src="@drawable/images234"
-                            android:scaleType="centerCrop"
-                            android:contentDescription="Continental meals" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="7dp"
-                            android:gravity="center"
-                            android:text="Continental"
-                            android:textColor="#FFFFFF"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                    <!-- GRILLS -->
-                    <LinearLayout
-                        android:layout_width="126dp"
-                        android:layout_height="150dp"
-                        android:layout_marginEnd="10dp"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:background="#104C39"
-                        android:padding="8dp"
-                        android:elevation="4dp">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:src="@drawable/images10"
-                            android:scaleType="centerCrop"
-                            android:contentDescription="Grilled meals" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="7dp"
-                            android:gravity="center"
-                            android:text="Grills"
-                            android:textColor="#FFFFFF"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                    <!-- RICE DISHES -->
-                    <LinearLayout
-                        android:layout_width="126dp"
-                        android:layout_height="150dp"
-                        android:layout_marginEnd="10dp"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:background="#104C39"
-                        android:padding="8dp"
-                        android:elevation="4dp">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:src="@drawable/images11"
-                            android:scaleType="centerCrop"
-                            android:contentDescription="Rice dishes" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="7dp"
-                            android:gravity="center"
-                            android:text="Rice Dishes"
-                            android:textColor="#FFFFFF"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                    <!-- SOUPS -->
-                    <LinearLayout
-                        android:layout_width="126dp"
-                        android:layout_height="150dp"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:background="#104C39"
-                        android:padding="8dp"
-                        android:elevation="4dp">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:src="@drawable/images15"
-                            android:scaleType="centerCrop"
-                            android:contentDescription="Soups and stews" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="7dp"
-                            android:gravity="center"
-                            android:text="Soups &amp; Stews"
-                            android:textColor="#FFFFFF"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </HorizontalScrollView>
-
-            <!-- FEATURED DISHES HEADING -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="18dp"
-                android:layout_marginEnd="18dp"
-                android:layout_marginTop="28dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="HANDPICKED FOR YOU"
-                        android:textColor="#F4B942"
-                        android:textSize="11sp"
-                        android:textStyle="bold"
-                        android:letterSpacing="0.06" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:text="Featured Dishes"
-                        android:textColor="#FFFFFF"
-                        android:textSize="22sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/btn_view_all"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:text="View all  →"
-                    android:textColor="#F4B942"
-                    android:textSize="13sp"
-                    android:textStyle="bold"
-                    android:clickable="true"
-                    android:focusable="true" />
-
-            </LinearLayout>
-
-            <!-- DISHES RECYCLER VIEW -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/dishes_recycler"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="12dp"
-                android:layout_marginTop="12dp"
-                android:nestedScrollingEnabled="false"
-                android:clipToPadding="false"
-                android:paddingBottom="12dp" />
-
-            <!-- CLOSING PROMO -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="18dp"
-                android:layout_marginEnd="18dp"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="20dp"
-                android:background="#104C39"
-                android:elevation="4dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="GOOD FOOD BRINGS US TOGETHER"
-                    android:textColor="#F4B942"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center"
-                    android:text="Freshly prepared meals, made with love and ready to brighten your day."
+                    android:text="Taste Something Special"
                     android:textColor="#FFFFFF"
-                    android:textSize="14sp"
-                    android:lineSpacingExtra="3dp" />
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:shadowColor="#000000"
+                    android:shadowDx="2"
+                    android:shadowDy="3"
+                    android:shadowRadius="3" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Delicious meals for every moment."
+                    android:textColor="#FFF4D8"
+                    android:textSize="13sp" />
 
                 <Button
-                    android:id="@+id/btn_order_bottom"
+                    android:id="@+id/btn_order_now"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
-                    android:layout_marginTop="14dp"
-                    android:text="EXPLORE MENU"
+                    android:layout_marginTop="12dp"
+                    android:minWidth="145dp"
+                    android:text="ORDER NOW  →"
                     android:textColor="#063B2B"
+                    android:textSize="14sp"
                     android:textStyle="bold"
                     android:backgroundTint="#F4B942"
-                    android:elevation="3dp" />
+                    android:elevation="4dp" />
 
             </LinearLayout>
 
-            <!-- FOOTER BRAND -->
+        </FrameLayout>
+
+        <!-- CATEGORIES TITLE -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginTop="26dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="18dp">
-
-                <ImageView
-                    android:layout_width="110dp"
-                    android:layout_height="65dp"
-                    android:src="@drawable/hp"
-                    android:scaleType="fitCenter"
-                    android:background="@android:color/transparent"
-                    android:contentDescription="Chicken and Co. logo" />
+                android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:gravity="center"
-                    android:text="Delicious meals. Great moments. Made with love."
-                    android:textColor="#DCEBE2"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center"
-                    android:text="Ibadan Road, Ijebu Ode, Ogun State"
+                    android:text="EXPLORE OUR MENU"
                     android:textColor="#F4B942"
-                    android:textSize="12sp" />
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.08" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="What are you craving?"
+                    android:textColor="#FFFFFF"
+                    android:textSize="21sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
         </LinearLayout>
 
-    </ScrollView>
+        <!-- CATEGORY CARDS -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:paddingStart="18dp"
+            android:paddingEnd="18dp"
+            android:scrollbars="none">
 
-    <!-- BOTTOM NAVIGATION -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:background="#042D21"
-        android:elevation="10dp">
-
-        <!-- HOME -->
-        <LinearLayout
-            android:id="@+id/ic_home"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:clickable="true"
-            android:focusable="true">
-
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="⌂"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="126dp"
+                    android:layout_height="150dp"
+                    android:layout_marginEnd="10dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="#104C39"
+                    android:padding="8dp"
+                    android:elevation="4dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:src="@drawable/images"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="African dishes" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:gravity="center"
+                        android:text="African"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="126dp"
+                    android:layout_height="150dp"
+                    android:layout_marginEnd="10dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="#104C39"
+                    android:padding="8dp"
+                    android:elevation="4dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:src="@drawable/images234"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="Continental meals" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:gravity="center"
+                        android:text="Continental"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="126dp"
+                    android:layout_height="150dp"
+                    android:layout_marginEnd="10dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="#104C39"
+                    android:padding="8dp"
+                    android:elevation="4dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:src="@drawable/images10"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="Grilled meals" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:gravity="center"
+                        android:text="Grills"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="126dp"
+                    android:layout_height="150dp"
+                    android:layout_marginEnd="10dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="#104C39"
+                    android:padding="8dp"
+                    android:elevation="4dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:src="@drawable/images11"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="Rice dishes" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:gravity="center"
+                        android:text="Rice Dishes"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="126dp"
+                    android:layout_height="150dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="#104C39"
+                    android:padding="8dp"
+                    android:elevation="4dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:src="@drawable/images15"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="Soups and stews" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:gravity="center"
+                        android:text="Soups &amp; Stews"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+        <!-- FEATURED DISHES -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginTop="28dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HANDPICKED FOR YOU"
+                    android:textColor="#F4B942"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.06" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="Featured Dishes"
+                    android:textColor="#FFFFFF"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/btn_view_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="View all  →"
                 android:textColor="#F4B942"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:clickable="true"
+                android:focusable="true" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/dishes_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="12dp"
+            android:nestedScrollingEnabled="false"
+            android:clipToPadding="false"
+            android:paddingBottom="12dp" />
+
+        <!-- CLOSING PROMO -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="20dp"
+            android:background="#104C39"
+            android:elevation="4dp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Home"
+                android:gravity="center"
+                android:text="GOOD FOOD BRINGS US TOGETHER"
                 android:textColor="#F4B942"
-                android:textSize="10sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <!-- SEARCH -->
-        <LinearLayout
-            android:id="@+id/ic_search"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:clickable="true"
-            android:focusable="true">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="⌕"
-                android:textColor="#FFFFFF"
-                android:textSize="24sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Search"
-                android:textColor="#FFFFFF"
-                android:textSize="10sp" />
-
-        </LinearLayout>
-
-        <!-- CART -->
-        <LinearLayout
-            android:id="@+id/ic_cart_nav"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:clickable="true"
-            android:focusable="true">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="🛒"
-                android:textSize="21sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Basket"
-                android:textColor="#FFFFFF"
-                android:textSize="10sp" />
-
-        </LinearLayout>
-
-        <!-- ORDERS / MUSIC -->
-        <LinearLayout
-            android:id="@+id/ic_orders"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:clickable="true"
-            android:focusable="true">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="♫"
-                android:textColor="#FFFFFF"
-                android:textSize="23sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Music"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="Freshly prepared meals, made with love and ready to brighten your day."
                 android:textColor="#FFFFFF"
-                android:textSize="10sp" />
+                android:textSize="14sp"
+                android:lineSpacingExtra="3dp" />
+
+            <Button
+                android:id="@+id/btn_order_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginTop="14dp"
+                android:text="EXPLORE MENU"
+                android:textColor="#063B2B"
+                android:textStyle="bold"
+                android:backgroundTint="#F4B942"
+                android:elevation="3dp" />
 
         </LinearLayout>
 
-        <!-- PROFILE -->
+        <!-- FOOTER BRAND -->
         <LinearLayout
-            android:id="@+id/ic_person"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
             android:gravity="center"
-            android:clickable="true"
-            android:focusable="true">
+            android:orientation="vertical"
+            android:padding="18dp">
+
+            <ImageView
+                android:layout_width="110dp"
+                android:layout_height="65dp"
+                android:src="@drawable/hp"
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent"
+                android:contentDescription="Chicken and Co. logo" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="♙"
-                android:textColor="#FFFFFF"
-                android:textSize="23sp" />
+                android:layout_marginTop="6dp"
+                android:gravity="center"
+                android:text="Delicious meals. Great moments. Made with love."
+                android:textColor="#DCEBE2"
+                android:textSize="12sp" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Profile"
-                android:textColor="#FFFFFF"
-                android:textSize="10sp" />
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="Ibadan Road, Ijebu Ode, Ogun State"
+                android:textColor="#F4B942"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
     </LinearLayout>
 
+</ScrollView>
+
+<!-- BOTTOM NAVIGATION -->
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="64dp"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:background="#042D21"
+    android:elevation="10dp">
+
+    <LinearLayout
+        android:id="@+id/ic_home"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:clickable="true"
+        android:focusable="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⌂"
+            android:textColor="#F4B942"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Home"
+            android:textColor="#F4B942"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ic_search"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:clickable="true"
+        android:focusable="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⌕"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search"
+            android:textColor="#FFFFFF"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ic_cart_nav"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:clickable="true"
+        android:focusable="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🛒"
+            android:textSize="21sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Basket"
+            android:textColor="#FFFFFF"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ic_orders"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:clickable="true"
+        android:focusable="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="♫"
+            android:textColor="#FFFFFF"
+            android:textSize="23sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Music"
+            android:textColor="#FFFFFF"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ic_person"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:clickable="true"
+        android:focusable="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="♙"
+            android:textColor="#FFFFFF"
+            android:textSize="23sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profile"
+            android:textColor="#FFFFFF"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
 </LinearLayout>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>
