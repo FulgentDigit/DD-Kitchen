@@ -31,14 +31,15 @@ public class MenuActivity extends AppCompatActivity {
     private static final String MENU_API =
             "https://iyaadam.uhd.com.ng/api/menu.php";
 
+    // Chicken and Co. WhatsApp contact
     private static final String WHATSAPP_NUMBER =
-            "2349078917130";
+            "2347089364492";
 
     private static final String RESTAURANT_NAME =
-            "DD KITCHEN";
+            "Chicken and Co.";
 
     private static final String RESTAURANT_ADDRESS =
-            "Off Olisa Road, Ijebu Ode, Ogun State, Nigeria";
+            "Ibadan Road, Ijebu Ode, Ogun State, Nigeria";
 
     private RecyclerView menuRecycler;
     private TextView restaurantName;
@@ -77,9 +78,19 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void updateBranding() {
-        restaurantName.setText(RESTAURANT_NAME);
-        restaurantAddress.setText(RESTAURANT_ADDRESS);
-        menuStatus.setText("Freshly prepared. Made with love.");
+        if (restaurantName != null) {
+            restaurantName.setText(RESTAURANT_NAME);
+        }
+
+        if (restaurantAddress != null) {
+            restaurantAddress.setText(RESTAURANT_ADDRESS);
+        }
+
+        if (menuStatus != null) {
+            menuStatus.setText(
+                    "Freshly prepared. Made with love."
+            );
+        }
     }
 
     private void setupRecyclerView() {
@@ -146,7 +157,8 @@ public class MenuActivity extends AppCompatActivity {
         if (whatsappButton != null) {
             whatsappButton.setOnClickListener(v ->
                     openWhatsApp(
-                            "Hello DD Kitchen! I would like to make an order."
+                            "Hello Chicken and Co.! " +
+                            "I would like to make an order."
                     )
             );
         }
@@ -156,7 +168,9 @@ public class MenuActivity extends AppCompatActivity {
         Button button = findViewById(viewId);
 
         if (button != null) {
-            button.setOnClickListener(v -> showCategory(category));
+            button.setOnClickListener(v ->
+                    showCategory(category)
+            );
         }
     }
 
@@ -265,7 +279,8 @@ public class MenuActivity extends AppCompatActivity {
                     }
                 }
 
-                JSONObject root = new JSONObject(response.toString());
+                JSONObject root =
+                        new JSONObject(response.toString());
 
                 if (!root.optBoolean("success", false)) {
                     return;
@@ -288,14 +303,18 @@ public class MenuActivity extends AppCompatActivity {
                     );
 
                     String name = item.optString("name", "Dish");
-                    String description = item.optString("description", "");
+                    String description =
+                            item.optString("description", "");
                     int price = (int) item.optDouble("price", 0);
-                    String imageUrl = item.optString("image_url", "");
+                    String imageUrl =
+                            item.optString("image_url", "");
                     double rating = item.optDouble("rating", 4.8);
-                    int reviewCount = item.optInt("review_count", 0);
+                    int reviewCount =
+                            item.optInt("review_count", 0);
                     int prepTime = item.optInt("prep_time", 30);
 
-                    boolean available = item.optInt("available", 1) == 1;
+                    boolean available =
+                            item.optInt("available", 1) == 1;
 
                     if (!available) {
                         continue;
@@ -345,7 +364,8 @@ public class MenuActivity extends AppCompatActivity {
     private void showCategory(String category) {
         displayedDishes.clear();
 
-        if (category == null || category.equalsIgnoreCase("All")) {
+        if (category == null ||
+                category.equalsIgnoreCase("All")) {
             displayedDishes.addAll(allDishes);
         } else {
             for (Dish dish : allDishes) {
@@ -366,7 +386,10 @@ public class MenuActivity extends AppCompatActivity {
         }
     }
 
-    private boolean matchesCategory(Dish dish, String category) {
+    private boolean matchesCategory(
+            Dish dish,
+            String category
+    ) {
         String name = dish.name == null
                 ? ""
                 : dish.name.toLowerCase(Locale.ROOT);
