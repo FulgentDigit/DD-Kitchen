@@ -1,1 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?><LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_margin="7dp"
+android:orientation="vertical"
+android:background="#202020"
+android:elevation="7dp"
+android:clipToOutline="true">
 
+<!-- Food Image -->
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="155dp">
+
+    <ImageView
+        android:id="@+id/dish_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#302B22"
+        android:scaleType="centerCrop"
+        android:contentDescription="Dish image" />
+
+    <!-- Gold label -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|start"
+        android:layout_margin="9dp"
+        android:paddingStart="9dp"
+        android:paddingEnd="9dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:text="CHICKEN &amp; CO."
+        android:textColor="#17130C"
+        android:textSize="9sp"
+        android:textStyle="bold"
+        android:letterSpacing="0.08"
+        android:background="#F4B942" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_gravity="bottom"
+        android:background="#66000000" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="9dp"
+        android:text="FRESHLY PREPARED"
+        android:textColor="#FFFFFF"
+        android:textSize="9sp"
+        android:textStyle="bold" />
+
+</FrameLayout>
+
+<!-- Dish Details -->
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <!-- Dish Name -->
+    <TextView
+        android:id="@+id/dish_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Grilled Chicken"
+        android:textColor="#FFF4D8"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:maxLines="2"
+        android:minHeight="40dp"
+        android:ellipsize="end" />
+
+    <!-- Description -->
+    <TextView
+        android:id="@+id/dish_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Deliciously prepared with rich flavours."
+        android:textColor="#D0CCC3"
+        android:textSize="12sp"
+        android:lineSpacingExtra="2dp"
+        android:maxLines="2"
+        android:minHeight="34dp"
+        android:ellipsize="end" />
+
+    <!-- Rating and preparation time -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/rating"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="4.5 ⭐ (42)"
+            android:textColor="#F4B942"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <TextView
+            android:id="@+id/prep_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="7dp"
+            android:paddingEnd="7dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="20 mins"
+            android:textColor="#F5E8C9"
+            android:textSize="10sp"
+            android:background="#353027"
+            android:maxLines="1" />
+
+    </LinearLayout>
+
+    <!-- Gold divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="10dp"
+        android:background="#51432B" />
+
+    <!-- Price and Add to Cart -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PRICE"
+                android:textColor="#B8A783"
+                android:textSize="9sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.12" />
+
+            <TextView
+                android:id="@+id/dish_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="₦3,500"
+                android:textColor="#F4B942"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:ellipsize="end" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_add_to_cart"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:minWidth="94dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:backgroundTint="#F4B942"
+            android:text="+ Add"
+            android:textAllCaps="false"
+            android:textColor="#17130C"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:stateListAnimator="@null"
+            android:elevation="3dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
+
+</LinearLayout>
