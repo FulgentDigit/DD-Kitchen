@@ -1,128 +1,213 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginStart="5dp"
+android:layout_marginEnd="5dp"
+android:layout_marginTop="7dp"
+android:layout_marginBottom="7dp"
+android:orientation="vertical"
+android:padding="14dp"
+android:background="#202020"
+android:elevation="5dp">
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- TOP: IMAGE AND DISH DETAILS -->
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="6dp"
-    android:layout_marginEnd="6dp"
-    android:layout_marginTop="6dp"
-    android:layout_marginBottom="6dp"
     android:orientation="horizontal"
-    android:padding="10dp"
-    android:gravity="center_vertical"
-    android:background="@color/white">
+    android:gravity="center_vertical">
 
     <!-- DISH IMAGE -->
-    <ImageView
-        android:id="@+id/dish_image"
-        android:layout_width="88dp"
-        android:layout_height="88dp"
-        android:scaleType="centerCrop"
-        android:background="@color/cream_dark"
-        android:contentDescription="Dish image" />
+    <FrameLayout
+        android:layout_width="104dp"
+        android:layout_height="112dp"
+        android:background="#343027"
+        android:elevation="3dp">
 
-    <!-- DETAILS -->
+        <ImageView
+            android:id="@+id/dish_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:contentDescription="Dish image" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:paddingStart="7dp"
+            android:paddingEnd="7dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:text="FRESH"
+            android:textColor="#17130B"
+            android:textSize="8sp"
+            android:textStyle="bold"
+            android:background="#F4B942" />
+
+    </FrameLayout>
+
+    <!-- DISH DETAILS -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="13dp"
         android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CHICKEN &amp; CO. SPECIAL"
+            android:textColor="#F4B942"
+            android:textSize="8sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.07" />
 
         <TextView
             android:id="@+id/dish_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:text="Dish Name"
-            android:textColor="@color/header_green"
-            android:textSize="15sp"
+            android:textColor="#FFFFFF"
+            android:textSize="17sp"
             android:textStyle="bold"
-            android:maxLines="2" />
+            android:maxLines="2"
+            android:ellipsize="end" />
 
         <TextView
             android:id="@+id/dish_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="7dp"
             android:text="₦2,500"
-            android:textColor="@color/alert_red"
-            android:textSize="12sp"
+            android:textColor="#F4B942"
+            android:textSize="19sp"
             android:textStyle="bold" />
 
-        <!-- QUANTITY -->
-        <LinearLayout
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="34dp"
-            android:layout_marginTop="7dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
-
-            <Button
-                android:id="@+id/btn_decrease"
-                android:layout_width="34dp"
-                android:layout_height="34dp"
-                android:minWidth="0dp"
-                android:minHeight="0dp"
-                android:text="−"
-                android:textSize="18sp"
-                android:textColor="@color/header_green"
-                android:background="@color/gold" />
-
-            <TextView
-                android:id="@+id/quantity"
-                android:layout_width="38dp"
-                android:layout_height="34dp"
-                android:gravity="center"
-                android:text="1"
-                android:textColor="@color/header_green"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:background="@color/cream_light" />
-
-            <Button
-                android:id="@+id/btn_increase"
-                android:layout_width="34dp"
-                android:layout_height="34dp"
-                android:minWidth="0dp"
-                android:minHeight="0dp"
-                android:text="+"
-                android:textSize="18sp"
-                android:textColor="@color/header_green"
-                android:background="@color/gold" />
-
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Made fresh for you"
+            android:textColor="#BEBEBE"
+            android:textSize="10sp" />
 
     </LinearLayout>
 
-    <!-- RIGHT SIDE -->
+</LinearLayout>
+
+<!-- GOLD DIVIDER -->
+<View
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:layout_marginTop="14dp"
+    android:layout_marginBottom="12dp"
+    android:background="#49402B" />
+
+<!-- BOTTOM: QUANTITY, SUBTOTAL, REMOVE -->
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical">
+
+    <!-- QUANTITY CONTROLS -->
     <LinearLayout
-        android:layout_width="72dp"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="#303030">
+
+        <Button
+            android:id="@+id/btn_decrease"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:padding="0dp"
+            android:text="−"
+            android:textSize="21sp"
+            android:textStyle="bold"
+            android:textColor="#17130B"
+            android:backgroundTint="#F4B942"
+            android:stateListAnimator="@null" />
+
+        <TextView
+            android:id="@+id/quantity"
+            android:layout_width="36dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_increase"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:padding="0dp"
+            android:text="+"
+            android:textSize="21sp"
+            android:textStyle="bold"
+            android:textColor="#17130B"
+            android:backgroundTint="#F4B942"
+            android:stateListAnimator="@null" />
+
+    </LinearLayout>
+
+    <!-- SUBTOTAL -->
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:gravity="end|center_vertical"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SUBTOTAL"
+            android:textColor="#AAAAAA"
+            android:textSize="8sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.08" />
 
         <TextView
             android:id="@+id/subtotal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
             android:text="₦2,500"
-            android:textColor="@color/header_green"
-            android:textSize="14sp"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/btn_remove"
-            android:layout_width="68dp"
-            android:layout_height="34dp"
-            android:layout_marginTop="8dp"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
-            android:text="REMOVE"
-            android:textColor="@color/white"
-            android:textSize="9sp"
-            android:textStyle="bold"
-            android:background="@color/alert_red" />
-
     </LinearLayout>
+
+    <!-- REMOVE BUTTON -->
+    <Button
+        android:id="@+id/btn_remove"
+        android:layout_width="76dp"
+        android:layout_height="40dp"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:text="REMOVE"
+        android:textColor="#FFFFFF"
+        android:textSize="9sp"
+        android:textStyle="bold"
+        android:backgroundTint="#B52B2B"
+        android:stateListAnimator="@null" />
+
+</LinearLayout>
 
 </LinearLayout>
