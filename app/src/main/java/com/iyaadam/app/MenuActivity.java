@@ -31,8 +31,9 @@ public class MenuActivity extends AppCompatActivity {
     private static final String MENU_API =
             "https://iyaadam.uhd.com.ng/api/menu.php";
 
-    // Chicken and Co. String contact
-    private static final String WHATSAPP_NUMBER =2349137282177";
+    // Chicken and Co. WhatsApp number
+    private static final String WHATSAPP_NUMBER =
+            "2349137282177";
 
     private static final String RESTAURANT_NAME =
             "Chicken and Co.";
@@ -51,7 +52,7 @@ public class MenuActivity extends AppCompatActivity {
 
     private DishAdapter adapter;
 
-    private final ExExecutorServicexecutor =
+    private final ExecutorService executor =
             Executors.newSingleThreadExecutor();
 
     @Override
@@ -93,6 +94,15 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView() {
+        if (menuRecycler == null) {
+            Toast.makeText(
+                    this,
+                    "Menu display could not be initialized.",
+                    Toast.LENGTH_LONG
+            ).show();
+            return;
+        }
+
         menuRecycler.setLayoutManager(
                 new LinearLayoutManager(this)
         );
@@ -163,7 +173,10 @@ public class MenuActivity extends AppCompatActivity {
         }
     }
 
-    private void setCategoryClick(int viewId, String category) {
+    private void setCategoryClick(
+            int viewId,
+            String category
+    ) {
         Button button = findViewById(viewId);
 
         if (button != null) {
@@ -216,7 +229,8 @@ public class MenuActivity extends AppCompatActivity {
                 "images5", 4.6, 87, 25, true
         ));
 
-        allDishes.add(new DiDish                "pepper_soup",
+        allDishes.add(new Dish(
+                "pepper_soup",
                 "Pepper Soup",
                 2500,
                 "A warming bowl of spicy Nigerian pepper soup.",
@@ -241,7 +255,10 @@ public class MenuActivity extends AppCompatActivity {
 
         displayedDishes.clear();
         displayedDishes.addAll(allDishes);
-        adapter.notifyDataSetChanged();
+
+        if (adapter != null) {
+            adapter.notifyDataSetChanged();
+        }
     }
 
     private void loadMenuFromServer() {
@@ -303,12 +320,17 @@ public class MenuActivity extends AppCompatActivity {
                     String name = item.optString("name", "Dish");
                     String description =
                             item.optString("description", "");
+
                     int price = (int) item.optDouble("price", 0);
+
                     String imageUrl =
                             item.optString("image_url", "");
+
                     double rating = item.optDouble("rating", 4.8);
+
                     int reviewCount =
                             item.optInt("review_count", 0);
+
                     int prepTime = item.optInt("prep_time", 30);
 
                     boolean available =
@@ -332,7 +354,9 @@ public class MenuActivity extends AppCompatActivity {
                 }
 
                 runOnUiThread(() -> {
-                    if (!serverDishes.isEmpty()) {
+                    if (!serverDishes.isEmpty()
+                            && adapter != null) {
+
                         allDishes.clear();
                         allDishes.addAll(serverDishes);
 
@@ -360,10 +384,14 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void showCategory(String category) {
+        if (adapter == null) {
+            return;
+        }
+
         displayedDishes.clear();
 
-        if (category == null ||
-                category.equalsIgnoreCase("All")) {
+        if (category == null
+                || category.equalsIgnoreCase("All")) {
             displayedDishes.addAll(allDishes);
         } else {
             for (Dish dish : allDishes) {
@@ -429,12 +457,12 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void openWhatsApp(String message) {
-        try {
-            String url = "https://wa.me/"
-                    + WHATSAPP_NUMBER
-                    + "?text="
-                    + Uri.encode(message);
+        String url = "https://wa.me/"
+                + WHATSAPP_NUMBER
+                + "?text="
+                + Uri.encode(message);
 
+        try {
             Intent intent = new Intent(
                     Intent.ACTION_VIEW,
                     Uri.parse(url)
@@ -454,6 +482,7 @@ public class MenuActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
         executor.shutdownNow();
     }
 }
