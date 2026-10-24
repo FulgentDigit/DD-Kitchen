@@ -31,9 +31,8 @@ public class MenuActivity extends AppCompatActivity {
     private static final String MENU_API =
             "https://iyaadam.uhd.com.ng/api/menu.php";
 
-    // Chicken and Co. WhatsApp contact
-    private static final String WHATSAPP_NUMBER =
-            "2347089364492";
+    // Chicken and Co. String contact
+    private static final String WHATSAPP_NUMBER =2349137282177";
 
     private static final String RESTAURANT_NAME =
             "Chicken and Co.";
@@ -52,7 +51,7 @@ public class MenuActivity extends AppCompatActivity {
 
     private DishAdapter adapter;
 
-    private final ExecutorService executor =
+    private final ExExecutorServicexecutor =
             Executors.newSingleThreadExecutor();
 
     @Override
@@ -217,8 +216,7 @@ public class MenuActivity extends AppCompatActivity {
                 "images5", 4.6, 87, 25, true
         ));
 
-        allDishes.add(new Dish(
-                "pepper_soup",
+        allDishes.add(new DiDish                "pepper_soup",
                 "Pepper Soup",
                 2500,
                 "A warming bowl of spicy Nigerian pepper soup.",
